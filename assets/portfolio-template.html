@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>[PORTFOLIO_TITLE] · [DESIGNER_NAME]</title>
+  <style>
+    :root{
+      --ink:#171717;--paper:#f1efe8;--paper-2:#e6e2d8;--accent:#f05a28;
+      --muted:#68665f;--line:rgba(23,23,23,.18);--pad:clamp(28px,5vw,92px);
+      --sans:Inter,"Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+      --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+    }
+    *{box-sizing:border-box} html,body{margin:0;background:#0d0d0d;color:var(--ink);font-family:var(--sans)}
+    body{overflow:hidden}.deck{display:flex;width:100vw;height:100svh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}.deck::-webkit-scrollbar{display:none}
+    .slide{position:relative;flex:0 0 100vw;height:100svh;scroll-snap-align:start;overflow:hidden;background:var(--paper)}
+    .slide::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:8.333vw 8.333vw;opacity:.12}
+    .slide-inner{position:relative;z-index:1;height:100%;padding:clamp(54px,6vh,88px) var(--pad) clamp(72px,9vh,118px);display:flex;flex-direction:column;gap:clamp(18px,2.4vh,34px)}
+    .theme-dark{--ink:#f1efe8;--paper:#171717;--paper-2:#272522;--muted:#b8b4aa;--line:rgba(241,239,232,.18)}
+    .theme-accent{--ink:#fff;--paper:var(--accent);--paper-2:rgba(255,255,255,.12);--muted:rgba(255,255,255,.74);--line:rgba(255,255,255,.2)}
+    .theme-paper{--paper:#e8e4da}
+    h1,h2,p{margin:0}.title-hero{font-size:clamp(58px,9vw,156px);line-height:.88;letter-spacing:-.065em;font-weight:520;max-width:12ch}.title-xl{font-size:clamp(46px,6.2vw,108px);line-height:.95;letter-spacing:-.05em;font-weight:520;max-width:16ch}.slide-head h1{font-size:clamp(38px,4.7vw,78px);line-height:1;letter-spacing:-.045em;max-width:18ch}
+    .eyebrow,.label,.meta,.caption,figcaption{font-family:var(--mono);text-transform:uppercase;letter-spacing:.09em;font-size:clamp(10px,.8vw,14px);line-height:1.45}.eyebrow,.label{color:var(--accent);font-weight:700}.lead{font-size:clamp(20px,2vw,34px);line-height:1.35;max-width:38ch}.body{font-size:clamp(16px,1.25vw,22px);line-height:1.55;max-width:56ch;color:var(--muted)}
+    .project-no{font-family:var(--mono);font-size:clamp(70px,16vw,280px);line-height:.72;color:var(--accent);letter-spacing:-.08em}.rule{height:1px;background:var(--line);width:100%}.spacer{flex:1}
+    .grid-2,.grid-3,.grid-4,.evidence-grid,.compare-grid{display:grid;gap:clamp(16px,2vw,34px)}.grid-2,.compare-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4,.brief-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.evidence-grid{grid-template-columns:repeat(3,minmax(0,1fr));min-height:0;flex:1}
+    .brief-grid>div,.decision-note,.metric{border-top:1px solid var(--line);padding-top:14px}.brief-grid p{font-size:clamp(15px,1.2vw,21px);line-height:1.45;margin-top:10px}.decision-note{font-size:clamp(18px,1.55vw,28px);line-height:1.4;max-width:58ch}
+    figure{margin:0;min-width:0;display:flex;flex-direction:column;gap:9px}.frame{min-height:0}.frame img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:var(--paper-2)}.frame.contain img{object-fit:contain}.evidence-grid .frame img{height:min(48vh,520px)}.compare-grid .frame img{height:min(44vh,480px)}figcaption{color:var(--muted);text-transform:none;letter-spacing:.02em}
+    .swatches{display:flex;gap:12px}.swatch{width:clamp(54px,6vw,100px);aspect-ratio:1;border:1px solid var(--line)}
+    .chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:#eee;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);font:12px var(--mono)}
+    .controls{display:flex;gap:8px}.controls button{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;width:34px;height:30px;cursor:pointer}.progress{position:absolute;left:0;bottom:54px;height:2px;background:var(--accent);width:0;transition:width .25s ease}
+    [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .48s ease,transform .48s ease}.slide.is-active [data-reveal]{opacity:1;transform:none}
+    @media(max-width:800px){body{overflow:auto}.deck{display:block;overflow:visible;height:auto}.slide{height:auto;min-height:100svh;overflow:visible}.grid-4,.grid-3,.grid-2,.brief-grid,.evidence-grid,.compare-grid{grid-template-columns:1fr}.slide-inner{height:auto;min-height:100svh}.chrome{display:none}.frame img,.evidence-grid .frame img,.compare-grid .frame img{height:auto;max-height:62vh}}
+    @media(prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}[data-reveal]{opacity:1;transform:none;transition:none}}
+    @media print{@page{size:16in 9in;margin:0}body{overflow:visible;background:#fff}.deck{display:block;height:auto;overflow:visible}.slide{width:16in;height:9in;break-after:page}.chrome,.progress{display:none}[data-reveal]{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" aria-label="[PORTFOLIO_TITLE]">
+    <!-- PORTFOLIO_SLIDES -->
+  </main>
+  <div class="progress" id="progress"></div>
+  <nav class="chrome" aria-label="Portfolio navigation">
+    <span>[DESIGNER_NAME] · [PORTFOLIO_META]</span>
+    <div class="controls"><button id="prev" aria-label="Previous page">←</button><span id="counter">01 / 01</span><button id="next" aria-label="Next page">→</button></div>
+  </nav>
+  <script>
+    const deck=document.querySelector('#deck');const slides=[...document.querySelectorAll('.slide')];const counter=document.querySelector('#counter');const progress=document.querySelector('#progress');let current=0;
+    const pad=n=>String(n).padStart(2,'0');
+    function show(i){if(!slides.length)return;current=Math.max(0,Math.min(i,slides.length-1));slides[current].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',inline:'start'});update()}
+    function update(){slides.forEach((s,i)=>s.classList.toggle('is-active',i===current));counter.textContent=`${pad(current+1)} / ${pad(slides.length)}`;progress.style.width=`${slides.length?(current+1)/slides.length*100:0}%`}
+    addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))show(current+1);if(['ArrowLeft','PageUp'].includes(e.key))show(current-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+    document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);
+    let wheelLock=false;addEventListener('wheel',e=>{if(innerWidth<=800||wheelLock)return;wheelLock=true;show(current+(e.deltaY>0||e.deltaX>0?1:-1));setTimeout(()=>wheelLock=false,500)},{passive:true});
+    let startX=0;deck.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1))},{passive:true});update();
+  </script>
+</body>
+</html>
