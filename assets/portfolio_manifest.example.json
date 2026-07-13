@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "portfolio": {
+    "title": "[PORTFOLIO_TITLE]",
+    "audience": "Industrial design hiring panel",
+    "presentation_context": "Interview presentation",
+    "confidentiality": "Replace or redact confidential material before publishing."
+  },
+  "projects": [
+    {
+      "id": "project-slug",
+      "name": "[PROJECT_NAME]",
+      "thesis": "For [user/context], I changed [product behavior] by [design decision], demonstrated through [evidence].",
+      "role": "[PERSONAL_ROLE]",
+      "contributions": ["[CONTRIBUTION]"]
+    }
+  ],
+  "slides": [
+    {"page": 1, "project_id": "project-slug", "layout_id": "ID01", "claim_ids": []}
+  ],
+  "evidence": [
+    {
+      "id": "ev-001",
+      "claim": "[CLAIM_SUPPORTED_BY_ARTIFACT]",
+      "level": "E2",
+      "artifact": "images/[FILE_NAME]",
+      "source": "Applicant project archive, [DATE_OR_CONTEXT]",
+      "authorship": "[AUTHORSHIP]",
+      "status": "ready"
+    }
+  ],
+  "assumptions": [],
+  "generated_assets": [],
+  "unresolved_gaps": []
+}

@@ -6,7 +6,7 @@
 
 [简体中文](README.zh-CN.md) · English
 
-![Version](https://img.shields.io/badge/version-v1.0.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-evidence--backed%20HTML%20portfolio-69A36F?style=flat-square)
@@ -25,7 +25,7 @@ An evidence-first Agent Skill for creating, restructuring, and reviewing industr
 - **18 registered layouts** — purpose-built for briefs, evidence walls, concept divergence, selection matrices, CMF, architecture, manufacturing, testing, iteration, and final resolution.
 - **AI disclosure by design** — generated concepts cannot silently become fake research, prototypes, CAD, or engineering evidence.
 - **Cross-agent runtime** — works with Codex, Claude Code, Cursor, Gemini CLI, OpenCode, and generic Agent Skills runtimes.
-- **Deterministic quality gates** — includes a structural validator, P0–P3 checklist, adapter synchronization, and six behavior evals.
+- **Deterministic quality gates** — includes HTML and manifest validators, a P0–P3 checklist, adapter synchronization, and six executable behavior rubrics.
 
 ## Portfolio workflow
 
@@ -56,7 +56,7 @@ The workflow evaluates five connected design lenses:
 portfolio/
 ├── index.html                 # Horizontal, responsive portfolio deck
 ├── images/                    # Research, process, CAD, prototypes, final work
-├── portfolio_manifest.json    # Audience, roles, evidence, assumptions, layouts
+├── portfolio_manifest.json    # Schema-checked audience, roles, evidence, assumptions, layouts
 └── source_notes.md            # Sources, authorship, disclosures, unresolved gaps
 ```
 
@@ -136,7 +136,8 @@ SKILL.md                 # Canonical Agent Skill
 ├── assets/              # Original HTML portfolio template
 ├── references/          # Story, evidence, layouts, visual system, QA
 ├── scripts/             # Install, sync, and validate
-└── evals/               # Platform-neutral behavior cases
+├── schemas/             # Portfolio-manifest contract
+└── evals/               # Platform-neutral rubrics and fixture observations
 ```
 
 After changing `SKILL.md`, regenerate and verify adapters:
@@ -151,10 +152,12 @@ python scripts/sync_adapters.py --check
 Validate a generated portfolio:
 
 ```bash
+python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
+python scripts/run_evals.py --all
 ```
 
-Delivery is blocked by P0 credibility failures or P1 comprehension/accessibility failures. P2 and P3 findings are reported as design polish.
+`run_evals.py` checks structured evaluator observations against the six bundled rubrics; it does not claim to execute a model. Delivery is blocked by P0 credibility failures or P1 comprehension/accessibility failures. P2 and P3 findings are reported as design polish.
 
 ## Design principles
 
@@ -177,11 +180,12 @@ No template or source code from `guizang-ppt-skill` is copied into this project.
 
 ## Version
 
-Current release: **v1.0.0**
+Current release: **v1.1.0**
 
 - Evidence-first industrial design portfolio workflow
+- MIT licensed for clear reuse
+- Schema-checked evidence, authorship, AI disclosure, and layout manifest
 - Original responsive HTML deck template
 - 18 registered industrial design layouts
 - Cross-agent adapters and installer
-- Structural validator and six behavior evals
-
+- Structural validator and six executable behavior rubrics
