@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/truman-t3/industrial-design-portfolio-skill/schemas/portfolio-manifest.schema.json",
+  "title": "Industrial Design Portfolio Manifest",
+  "type": "object",
+  "required": ["schema_version", "portfolio", "projects", "slides", "evidence", "assumptions", "generated_assets", "unresolved_gaps"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "portfolio": {
+      "type": "object",
+      "required": ["title", "audience", "presentation_context"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "audience": {"type": "string", "minLength": 1},
+        "presentation_context": {"type": "string", "minLength": 1},
+        "confidentiality": {"type": "string"}
+      }
+    },
+    "projects": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "thesis", "role", "contributions"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+          "name": {"type": "string", "minLength": 1},
+          "thesis": {"type": "string", "minLength": 1},
+          "role": {"type": "string", "minLength": 1},
+          "contributions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "slides": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["page", "project_id", "layout_id", "claim_ids"],
+        "properties": {
+          "page": {"type": "integer", "minimum": 1},
+          "project_id": {"type": "string"},
+          "layout_id": {"type": "string", "pattern": "^ID(0[1-9]|1[0-8])$"},
+          "claim_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "level", "artifact", "source", "authorship", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "level": {"enum": ["E0", "E1", "E2", "E3"]},
+          "artifact": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "authorship": {"type": "string", "minLength": 1},
+          "status": {"enum": ["ready", "caveat", "to_validate", "omit"]}
+        }
+      }
+    },
+    "assumptions": {"type": "array", "items": {"type": "object"}},
+    "generated_assets": {"type": "array", "items": {"type": "object"}},
+    "unresolved_gaps": {"type": "array", "items": {"type": "object"}}
+  }
+}

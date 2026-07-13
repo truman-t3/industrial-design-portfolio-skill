@@ -6,7 +6,7 @@
 
 简体中文 · [English](README.md)
 
-![Version](https://img.shields.io/badge/version-v1.0.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-%E8%AF%81%E6%8D%AE%E5%9E%8B%20HTML%20%E4%BD%9C%E5%93%81%E9%9B%86-69A36F?style=flat-square)
@@ -25,7 +25,7 @@
 - **18 种专用版式**：覆盖设计任务书、证据墙、方案发散、选择矩阵、CMF、结构、制造、测试、迭代和最终方案。
 - **内置 AI 披露机制**：AI 概念图不能被悄悄包装成用户研究、真实模型、CAD 或工程证据。
 - **跨 Agent 兼容**：支持 Codex、Claude Code、Cursor、Gemini CLI、OpenCode 和通用 Agent Skills。
-- **确定性的质量门槛**：包含结构验证器、P0–P3 检查表、适配文件同步和六条行为 eval。
+- **确定性的质量门槛**：包含 HTML 与 manifest 验证器、P0–P3 检查表、适配文件同步和六条可执行行为 rubric。
 
 ## 作品集工作流
 
@@ -56,7 +56,7 @@ flowchart LR
 portfolio/
 ├── index.html                 # 横向翻页、响应式网页作品集
 ├── images/                    # 调研、过程、CAD、原型、最终方案
-├── portfolio_manifest.json    # 受众、职责、证据、假设、版式记录
+├── portfolio_manifest.json    # 经 schema 校验的受众、职责、证据、假设、版式记录
 └── source_notes.md            # 来源、署名、AI 披露、待验证问题
 ```
 
@@ -136,7 +136,8 @@ SKILL.md                 # Agent Skills 标准主文件
 ├── assets/              # 原创 HTML 作品集模板
 ├── references/          # 叙事、证据、版式、视觉、质检
 ├── scripts/             # 安装、同步、验证
-└── evals/               # 跨平台行为测试
+├── schemas/             # portfolio manifest 契约
+└── evals/               # 跨平台 rubric 与 fixture 观察结果
 ```
 
 修改 `SKILL.md` 后重新生成并检查适配文件：
@@ -149,10 +150,12 @@ python scripts/sync_adapters.py --check
 ## 作品集验证
 
 ```bash
+python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
+python scripts/run_evals.py --all
 ```
 
-P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
+`run_evals.py` 会把结构化评估观察结果与六条 rubric 对照；它不会声称自己执行了模型。P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
 
 ## 设计原则
 
@@ -175,11 +178,12 @@ P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为�
 
 ## 版本
 
-当前版本：**v1.0.0**
+当前版本：**v1.1.0**
 
 - 以证据为核心的工业设计作品集工作流
+- MIT 许可证，明确可复用范围
+- 可校验证据、作者职责、AI 披露与版式的 manifest
 - 原创响应式 HTML 横向作品集模板
 - 18 种工业设计专用登记版式
 - 跨 Agent 入口与安装器
-- 结构验证器与六条行为 eval
-
+- HTML/manifest 验证器与六条可执行行为 rubric

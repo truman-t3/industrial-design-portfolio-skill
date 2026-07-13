@@ -52,6 +52,7 @@ If the user has not specified audience or format, make reasonable assumptions an
 - Read [references/visual-system.md](references/visual-system.md) when selecting theme, typography, color, image treatment, or page rhythm.
 - Read [references/image-policy.md](references/image-policy.md) before generating or substantially editing any visual.
 - Read [references/checklist.md](references/checklist.md) for the final review and severity model.
+- Read [schemas/portfolio-manifest.schema.json](schemas/portfolio-manifest.schema.json) before creating or substantially editing `portfolio_manifest.json`.
 - Read [references/platform-compatibility.md](references/platform-compatibility.md) for platform discovery paths, installation, adapter files, and capability fallbacks.
 
 ## Workflow
@@ -67,7 +68,7 @@ Capture or infer:
 - confidentiality and redaction rules;
 - authorship: individual responsibilities versus team contributions.
 
-Write these decisions into `portfolio_manifest.json`.
+Copy `assets/portfolio_manifest.example.json` to the project output as `portfolio_manifest.json`, then write these decisions into it. Preserve its schema version and record uncertainty rather than deleting required fields.
 
 ### 2. Audit source material before designing pages
 
@@ -168,6 +169,12 @@ python <skill-root>/scripts/validate_portfolio.py path/to/index.html
 # or: python3 <skill-root>/scripts/validate_portfolio.py path/to/index.html
 ```
 
+Validate the manifest before validating HTML:
+
+```bash
+python <skill-root>/scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
+```
+
 Then preview in a browser at desktop and narrow widths when browser access exists. Without browser access, report the missing visual QA step instead of claiming it passed. Check at least:
 
 - first view and navigation;
@@ -191,7 +198,7 @@ portfolio/
 └── source_notes.md
 ```
 
-`portfolio_manifest.json` records audience, projects, page plan, layout IDs, sources, evidence levels, assumptions, generated assets, and unresolved gaps. `source_notes.md` provides human-readable citations, authorship, and caveats.
+`portfolio_manifest.json` records audience, projects, page plan, layout IDs, sources, evidence levels, assumptions, generated assets, and unresolved gaps. Validate it with `scripts/validate_manifest.py` before delivery. `source_notes.md` provides human-readable citations, authorship, and caveats.
 
 If the user requests PDF, export only after browser review. Treat PDF as a derivative of the approved HTML deck, not a separate unreviewed design.
 
