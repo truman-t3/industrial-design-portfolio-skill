@@ -6,6 +6,9 @@
 
 [简体中文](README.zh-CN.md) · English
 
+> ⭐ **If this project helped you, a star is the easiest way to say thanks — and helps others find it.**
+> 若这个项目对你有用，点个 Star 就是最简单的鼓励，也能帮更多人发现它。
+
 ![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
