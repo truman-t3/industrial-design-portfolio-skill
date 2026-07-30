@@ -38,53 +38,13 @@
 | ID17 | Index | Selected work overview | Projects, roles, capabilities |
 | ID18 | Contact | Closing identity | Contact and relevant links |
 
-## Suggested HTML skeletons
+## Copy-ready HTML fragments
 
-### ID02 Project Brief
+Every registered layout has a complete fragment under `assets/layouts/IDxx.html`. Copy the fragment that matches the page plan instead of inventing a new section structure. Replace every square-bracket placeholder; the portfolio validator treats unresolved placeholders as P1 blockers.
 
-```html
-<section class="slide theme-light" data-layout="ID02" data-project="project-a">
-  <div class="slide-inner">
-    <p class="eyebrow">PROJECT 01 · BRIEF</p>
-    <h1 class="title-xl">A precise statement of the design problem.</h1>
-    <div class="grid-4 brief-grid">
-      <div><span class="label">USER</span><p>...</p></div>
-      <div><span class="label">ROLE</span><p>...</p></div>
-      <div><span class="label">TIME</span><p>...</p></div>
-      <div><span class="label">CONSTRAINT</span><p>...</p></div>
-    </div>
-  </div>
-</section>
-```
+The fragments deliberately contain only one `<section class="slide">`. Insert that section inside `<!-- PORTFOLIO_SLIDES -->` in `assets/portfolio-template.html`. Keep the `data-layout` value unchanged and replace `data-project` with the manifest project ID.
 
-### ID03 Evidence Wall
-
-```html
-<section class="slide theme-paper" data-layout="ID03" data-project="project-a">
-  <div class="slide-inner">
-    <header class="slide-head"><p class="eyebrow">OBSERVATION</p><h1>Evidence before interpretation</h1></header>
-    <div class="evidence-grid">
-      <figure class="frame"><img src="images/03-observation.jpg" alt="..."><figcaption>E2 · Source · Finding</figcaption></figure>
-      <figure class="frame"><img src="images/03-prototype.jpg" alt="..."><figcaption>E2 · Prototype purpose</figcaption></figure>
-    </div>
-  </div>
-</section>
-```
-
-### ID13 Iteration Delta
-
-```html
-<section class="slide theme-dark" data-layout="ID13" data-project="project-a">
-  <div class="slide-inner">
-    <p class="eyebrow">ITERATION 02</p><h1>What changed and why</h1>
-    <div class="compare-grid">
-      <figure class="frame"><img src="images/13-before.jpg" alt="Before"><figcaption>Before · observed failure</figcaption></figure>
-      <figure class="frame"><img src="images/13-after.jpg" alt="After"><figcaption>After · design response</figcaption></figure>
-    </div>
-    <p class="decision-note">Because [evidence], we changed [decision], improving/targeting [effect].</p>
-  </div>
-</section>
-```
+Run `python scripts/validate_layout_library.py` after changing any fragment. The check requires all ID01-ID18 files, matching layout IDs, project identifiers, and non-empty image alt text.
 
 ## Image slots
 
@@ -105,4 +65,3 @@ Use `object-fit: contain` for drawings, screenshots, diagrams, and text-bearing 
 - Do not repeat the same layout more than twice consecutively.
 - A 12-page case should use at least seven distinct layout IDs.
 - End with resolution plus reflection; do not end on an unexplained render.
-

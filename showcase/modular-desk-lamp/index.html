@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Modular Desk Lamp · Fictional Skill Showcase</title>
+  <style>
+    :root{
+      --ink:#10233e;--paper:#f4f3ee;--paper-2:#e7e8e6;--accent:#1c67d2;
+      --muted:#657083;--line:rgba(16,35,62,.18);--pad:clamp(28px,5vw,92px);
+      --sans:Inter,"Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+      --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+    }
+    *{box-sizing:border-box}html,body{margin:0;background:#071321;color:var(--ink);font-family:var(--sans)}
+    body{overflow:hidden}.deck{display:flex;width:100vw;height:100svh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:auto;scrollbar-width:none}.deck::-webkit-scrollbar{display:none}
+    .slide{position:relative;flex:0 0 100vw;height:100svh;scroll-snap-align:start;overflow:hidden;background:var(--paper);color:var(--ink);content-visibility:auto;contain-intrinsic-size:100vw 100svh}
+    .slide::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:8.333vw 8.333vw;opacity:.10}
+    .slide-inner{position:relative;z-index:1;height:100%;padding:clamp(52px,5.7vh,82px) var(--pad) clamp(72px,8.5vh,112px);display:flex;flex-direction:column;gap:clamp(16px,2.1vh,30px)}
+    .theme-dark{--ink:#f4f3ee;--paper:#10233e;--paper-2:#173252;--muted:#b9c4d4;--line:rgba(244,243,238,.17)}
+    .theme-accent{--ink:#fff;--paper:#1c67d2;--paper-2:rgba(255,255,255,.12);--muted:rgba(255,255,255,.78);--line:rgba(255,255,255,.2)}
+    .theme-paper{--paper:#e9e9e4}
+    h1,h2,p{margin:0}.title-hero{font-size:clamp(58px,8.2vw,144px);line-height:.88;letter-spacing:-.065em;font-weight:520;max-width:12ch}.title-xl{font-size:clamp(44px,5.8vw,98px);line-height:.95;letter-spacing:-.05em;font-weight:520;max-width:17ch}.slide-head h1{font-size:clamp(36px,4.2vw,70px);line-height:1;letter-spacing:-.045em;max-width:20ch}
+    .eyebrow,.label,.meta,.caption,figcaption{font-family:var(--mono);text-transform:uppercase;letter-spacing:.085em;font-size:clamp(10px,.76vw,13px);line-height:1.45}.eyebrow,.label{color:var(--accent);font-weight:700}.theme-accent .eyebrow{color:#dceaff}.lead{font-size:clamp(19px,1.8vw,31px);line-height:1.36;max-width:42ch}.body{font-size:clamp(15px,1.15vw,20px);line-height:1.52;max-width:58ch;color:var(--muted)}
+    .project-no{font-family:var(--mono);font-size:clamp(70px,15vw,260px);line-height:.72;color:#fff;letter-spacing:-.08em}.rule{height:1px;background:var(--line);width:100%}.spacer{flex:1}
+    .grid-2,.grid-3,.grid-4,.evidence-grid,.compare-grid{display:grid;gap:clamp(16px,2vw,32px)}.grid-2,.compare-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4,.brief-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.evidence-grid{grid-template-columns:repeat(3,minmax(0,1fr));min-height:0;flex:1}
+    .brief-grid>div,.decision-note,.metric{border-top:1px solid var(--line);padding-top:14px}.brief-grid p{font-size:clamp(14px,1.1vw,19px);line-height:1.45;margin-top:10px}.decision-note{font-size:clamp(17px,1.45vw,26px);line-height:1.4;max-width:64ch}
+    figure{margin:0;min-width:0;display:flex;flex-direction:column;gap:8px}.frame{min-height:0;overflow:hidden}.frame img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:var(--paper-2)}.frame.contain img{object-fit:contain}.evidence-grid .frame img{height:min(45vh,500px)}.compare-grid .frame img{height:min(42vh,460px)}figcaption{color:var(--muted);text-transform:none;letter-spacing:.015em}
+    .hero-frame{flex:1;min-height:0}.hero-frame img{height:100%;object-fit:contain}.swatches{display:flex;gap:12px}.swatch{width:clamp(54px,6vw,96px);aspect-ratio:1;border:1px solid var(--line)}
+    .data-table{width:100%;border-collapse:collapse;font-size:clamp(13px,1vw,18px);line-height:1.4}.data-table th,.data-table td{border-top:1px solid var(--line);padding:clamp(10px,1.1vw,17px) 12px;text-align:left;vertical-align:top}.data-table thead th{font:700 clamp(10px,.8vw,14px)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.data-table tbody th{font-family:var(--mono);color:var(--accent)}
+    .disclosure{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font:700 clamp(9px,.7vw,12px)/1.4 var(--mono);letter-spacing:.04em}.disclosure::before{content:"AI";border:1px solid currentColor;padding:2px 4px}
+    .crop-third,.crop-half{overflow:hidden;height:min(45vh,500px)}.crop-third img{width:300%;max-width:none;height:100%;object-fit:fill}.crop-third.center img{transform:translateX(-33.333%)}.crop-third.right img{transform:translateX(-66.666%)}.crop-half img{width:200%;max-width:none;height:100%;object-fit:fill}.crop-half.after img{transform:translateX(-50%)}
+    .status-band{display:flex;gap:10px;flex-wrap:wrap}.status-band span{border:1px solid var(--line);padding:7px 10px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+    .slide[data-layout="ID13"] .slide-head h1{font-size:clamp(34px,3.5vw,58px)}.slide[data-layout="ID13"] .compare-grid .frame img{height:min(36vh,390px)}.slide[data-layout="ID14"] .title-xl{font-size:clamp(40px,4.4vw,72px);max-width:24ch}
+    .chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:#eee;background:rgba(5,16,29,.96);font:12px var(--mono)}
+    .controls{display:flex;gap:8px}.controls button{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;width:34px;height:30px;cursor:pointer}.progress{position:absolute;left:0;bottom:54px;height:2px;background:#438df3;width:0;transition:width .25s ease}
+    [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .48s ease,transform .48s ease}.slide.is-active [data-reveal]{opacity:1;transform:none}
+    @media(max-width:800px){body{overflow:auto}.deck{display:block;overflow:visible;height:auto}.slide{height:auto;min-height:100svh;overflow:hidden}.grid-4,.grid-3,.grid-2,.brief-grid,.evidence-grid,.compare-grid{grid-template-columns:minmax(0,1fr)}.slide-inner{height:auto;min-height:100svh;min-width:0}.slide-inner>*{min-width:0}.title-hero{font-size:clamp(42px,12vw,54px);line-height:.96;max-width:100%;overflow-wrap:anywhere}.title-xl{font-size:clamp(38px,10.5vw,50px);max-width:100%;overflow-wrap:anywhere}.slide-head h1{font-size:clamp(34px,9vw,46px);max-width:100%;overflow-wrap:anywhere}.body,.lead{width:100%;overflow-wrap:anywhere}.chrome{display:none}.frame img,.evidence-grid .frame img,.compare-grid .frame img,.hero-frame img{height:auto;max-height:62vh}.crop-third,.crop-half{height:48vh}.crop-third img,.crop-half img{height:100%;max-height:none}.data-table{display:block;overflow-x:auto}}
+    @media(prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}[data-reveal]{opacity:1;transform:none;transition:none}}
+    .render-all .slide{content-visibility:visible;contain-intrinsic-size:none}
+    @media print{@page{size:16in 9in;margin:0}body{overflow:visible;background:#fff}.deck{display:block;height:auto;overflow:visible}.slide{width:16in;height:9in;break-after:page;content-visibility:visible;contain-intrinsic-size:none}.chrome,.progress{display:none}[data-reveal]{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" aria-label="Modular Desk Lamp fictional showcase">
+    <section class="slide theme-dark" data-layout="ID01" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">INDUSTRIAL DESIGN · FICTIONAL SKILL SHOWCASE</p><div class="spacer"></div><h1 class="title-hero">Evidence before aesthetics.</h1><div class="rule"></div><div class="grid-2"><p class="lead">Modular Desk Lamp</p><p class="body">A demonstration of how the Skill separates concept intent, generated imagery, assumptions, and engineering proof.</p></div></div>
+    </section>
+
+    <section class="slide theme-accent" data-layout="ID16" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">PROJECT 01 · CONCEPT PROPOSITION</p><div class="spacer"></div><div class="grid-2"><p class="project-no">01</p><div><h1 class="title-xl">A light that changes role, not identity.</h1><p class="lead">Concept intent: one repairable platform for task light, call light, and compact storage.</p></div></div><p class="caption">E0 · Fictional demonstration · To validate</p></div>
+    </section>
+
+    <section class="slide theme-light" data-layout="ID02" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">PROJECT 01 · BRIEF</p><h1 class="title-xl">Reduce replacement by separating what wears, moves, and emits light.</h1><div class="grid-4 brief-grid"><div><span class="label">USER</span><p>Assumption: people working in compact home spaces.</p></div><div><span class="label">ROLE</span><p>Fictional concept direction and portfolio demonstration.</p></div><div><span class="label">TIME</span><p>Illustrative case; no real project timeline.</p></div><div><span class="label">CONSTRAINT</span><p>Small footprint, reach, stability, service access.</p></div></div><div class="status-band"><span>All claims E0</span><span>No user research</span><span>No engineering review</span></div></div>
+    </section>
+
+    <section class="slide theme-paper" data-layout="ID03" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">SYNTHETIC SCENARIOS</p><h1>Three behaviors to investigate—not findings.</h1></header><div class="evidence-grid"><figure><div class="frame crop-third"><img data-src="images/generated/lamp-04-scenarios-sheet.webp" alt="Synthetic task-light scenario with the modular lamp over a notebook"></div><figcaption>E0 · Assumption: task work may require low, directed light.</figcaption></figure><figure><div class="frame crop-third center"><img data-src="images/generated/lamp-04-scenarios-sheet.webp" alt="Synthetic video-call scenario with the modular lamp beside a monitor"></div><figcaption>E0 · Assumption: calls may require a second lighting position.</figcaption></figure><figure><div class="frame crop-third right"><img data-src="images/generated/lamp-04-scenarios-sheet.webp" alt="Synthetic compact-desk scenario with the modular lamp folded down"></div><figcaption>E0 · Assumption: desk depth may constrain the footprint.</figcaption></figure></div><p class="disclosure">AI-assisted concept visualization · Not research evidence</p></div>
+    </section>
+
+    <section class="slide theme-accent" data-layout="ID04" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">PROVISIONAL INSIGHT · TO VALIDATE</p><div class="spacer"></div><h1 class="title-xl">The light source may need to move between modes while the base stays familiar.</h1><div class="rule"></div><p class="lead">This is a design hypothesis derived from synthetic scenarios—not an observed user need.</p></div>
+    </section>
+
+    <section class="slide theme-paper" data-layout="ID06" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">CONCEPT DIVERGENCE</p><h1>Change the architecture, preserve the product language.</h1></header><div class="grid-3"><figure><div class="frame crop-third"><img data-src="images/generated/lamp-06-concepts-sheet.webp" alt="Concept route A with desk clamp mounting"></div><figcaption>A · Clamp route · Clears the work surface; limits portability.</figcaption></figure><figure><div class="frame crop-third center"><img data-src="images/generated/lamp-06-concepts-sheet.webp" alt="Concept route B with circular weighted base"></div><figcaption>B · Weighted base · Portable and serviceable; needs stability study.</figcaption></figure><figure><div class="frame crop-third right"><img data-src="images/generated/lamp-06-concepts-sheet.webp" alt="Concept route C mounted to a desk rail"></div><figcaption>C · Rail route · Flexible placement; depends on an ecosystem.</figcaption></figure></div><p class="disclosure">AI-assisted concept visualization · Not engineering evidence</p></div>
+    </section>
+
+    <section class="slide theme-light" data-layout="ID07" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">ILLUSTRATIVE DECISION</p><h1>Why carry the weighted-base route forward?</h1></header><table class="data-table"><thead><tr><th>Route</th><th>Portable</th><th>Desk access</th><th>Service path</th><th>Status</th></tr></thead><tbody><tr><th>A · Clamp</th><td>Low</td><td>High</td><td>Medium</td><td>Hold</td></tr><tr><th>B · Base</th><td>High</td><td>Medium</td><td>High</td><td>Explore</td></tr><tr><th>C · Rail</th><td>Medium</td><td>High</td><td>Medium</td><td>Hold</td></tr></tbody></table><p class="decision-note">Concept decision: explore Route B because it makes the modular promise legible without requiring desk hardware. Criteria remain assumptions until tested.</p></div>
+    </section>
+
+    <section class="slide theme-dark" data-layout="ID08" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">FORM · CMF</p><h1>Make adjustment feel precise, not mechanical.</h1></header><div class="grid-2"><figure class="frame"><img data-src="images/generated/lamp-08-cmf.webp" alt="Close-up concept visualization of the lamp head, cylindrical joint, and base control"><figcaption>Concept intent · Cylindrical joints, tactile dial, replaceable sleeve.</figcaption></figure><div><p class="lead">Deep navy anchors the structure. A cobalt textile-like sleeve makes the replaceable light module visible. Warm opal light softens the technical geometry.</p><div class="spacer"></div><div class="swatches"><span class="swatch" style="background:#10233e" title="Deep navy"></span><span class="swatch" style="background:#1c67d2" title="Cobalt blue"></span><span class="swatch" style="background:#f4f0df" title="Warm opal"></span></div><p class="caption">Concept CMF only · No material approval or supplier validation</p></div></div><p class="disclosure">AI-assisted concept visualization · Not CMF approval</p></div>
+    </section>
+
+    <section class="slide theme-light" data-layout="ID10" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">CONCEPTUAL ARCHITECTURE</p><h1>Separate the modules that age differently.</h1></header><div class="grid-2"><figure class="frame contain"><img data-src="images/generated/lamp-09-conceptual-architecture.webp" alt="Exploded conceptual illustration of lamp head, arms, joints, base shell, and power module"><figcaption>Conceptual architecture illustration · Geometry and assembly remain unverified.</figcaption></figure><div class="brief-grid grid-2"><div><span class="label">01 · LIGHT</span><p>Replaceable head, sleeve, diffuser.</p></div><div><span class="label">02 · MOTION</span><p>Two arms with cylindrical joints.</p></div><div><span class="label">03 · POWER</span><p>Base-contained concept module.</p></div><div><span class="label">04 · SERVICE</span><p>Access path to validate with engineering.</p></div></div></div><p class="disclosure">AI-assisted concept visualization · Not engineering evidence</p></div>
+    </section>
+
+    <section class="slide theme-light" data-layout="ID12" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">VALIDATION PLAN · NO RESULTS</p><h1>Four questions for the first physical rig.</h1></header><div class="grid-2"><figure class="frame"><img data-src="images/generated/lamp-10-validation-plan.webp" alt="Concept validation-plan illustration showing reach, base stability, joint movement, and light spread"><figcaption>Future validation plan · No prototype or measured result exists.</figcaption></figure><div class="brief-grid grid-2"><div><span class="label">REACH</span><p>Can the head cover intended work zones?</p></div><div><span class="label">STABILITY</span><p>What base mass resists tipping?</p></div><div><span class="label">EFFORT</span><p>What joint torque feels controlled?</p></div><div><span class="label">GLARE</span><p>Which diffuser and angle protect sight lines?</p></div></div></div><p class="disclosure">AI-assisted validation-plan illustration · Not test evidence</p></div>
+    </section>
+
+    <section class="slide theme-dark" data-layout="ID13" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">ILLUSTRATIVE ITERATION</p><h1>A proposed stability response—not a measured improvement.</h1></header><div class="compare-grid"><figure><div class="frame crop-half"><img data-src="images/generated/lamp-11-iteration-pair.webp" alt="Earlier concept with narrow base and long lower arm"></div><figcaption>Before · Narrow base and long reach create a stability concern.</figcaption></figure><figure><div class="frame crop-half after"><img data-src="images/generated/lamp-11-iteration-pair.webp" alt="Revised concept with wider base and shorter lower arm"></div><figcaption>After · Wider base and shorter lower arm are proposed responses.</figcaption></figure></div><p class="decision-note">To validate: build matched rigs, document mass and reach, then measure the tipping boundary.</p><p class="disclosure">AI-assisted concept visualization · No physical test performed</p></div>
+    </section>
+
+    <section class="slide theme-dark" data-layout="ID14" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">FINAL CONCEPT RESOLUTION</p><h1 class="title-xl">One platform. Three possible modes. Many unanswered questions.</h1><figure class="frame hero-frame"><img data-src="images/generated/lamp-12-final-hero.webp" alt="Final modular desk lamp concept with circular base, two articulated arms, and capsule light head"><figcaption>Concept resolution · Fictional Skill showcase · Not a prototype or production product.</figcaption></figure><p class="disclosure">AI-assisted concept visualization · Not engineering evidence</p></div>
+    </section>
+
+    <section class="slide theme-paper" data-layout="ID15" data-project="modular-desk-lamp">
+      <div class="slide-inner"><header class="slide-head"><p class="eyebrow">REFLECTION</p><h1>The portfolio is honest when uncertainty stays visible.</h1></header><div class="grid-3 brief-grid"><div><span class="label">DEFINED</span><p>A coherent modular concept and a clear validation agenda.</p></div><div><span class="label">UNKNOWN</span><p>User value, ergonomics, optics, thermal behavior, cost, and assembly.</p></div><div><span class="label">NEXT</span><p>Research, functional rigs, photometric tests, and engineering review.</p></div></div><div class="spacer"></div><p class="lead">A polished image can explain intent. It cannot raise an E0 assumption into evidence.</p></div>
+    </section>
+
+    <section class="slide theme-dark" data-layout="ID18" data-project="modular-desk-lamp">
+      <div class="slide-inner"><p class="eyebrow">INDUSTRIAL-DESIGN-PORTFOLIO SKILL</p><div class="spacer"></div><h1 class="title-hero">Show the judgment. Label the unknowns.</h1><div class="rule"></div><div class="grid-3 brief-grid"><div><span class="label">PROJECT</span><p>Fictional demonstration</p></div><div><span class="label">SOURCE</span><p>truman-t3 / industrial-design-portfolio-skill</p></div><div><span class="label">STATUS</span><p>Local v1.2 showcase draft</p></div></div></div>
+    </section>
+  </main>
+  <div class="progress" id="progress"></div>
+  <nav class="chrome" aria-label="Portfolio navigation"><span>MODULAR DESK LAMP · FICTIONAL SHOWCASE</span><div class="controls"><button id="prev" aria-label="Previous page">←</button><span id="counter">01 / 14</span><button id="next" aria-label="Next page">→</button></div></nav>
+  <script>
+    const deck=document.querySelector('#deck');const slides=[...document.querySelectorAll('.slide')];const slideMarkup=slides.map(slide=>slide.innerHTML);const counter=document.querySelector('#counter');const progress=document.querySelector('#progress');const params=new URLSearchParams(location.search);const requestedPage=Number(params.get('page'));const renderAll=params.get('render')==='all';const placeholder='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';let current=Number.isFinite(requestedPage)&&requestedPage>0?requestedPage-1:0;current=Math.max(0,Math.min(current,slides.length-1));
+    const pad=n=>String(n).padStart(2,'0');
+    function prepareImages(slide){slide.querySelectorAll('img[data-src]').forEach(img=>{if(!img.src){img.src=placeholder;img.loading='lazy';img.decoding='async'}})}
+    function mountSlide(index){const slide=slides[index];if(!slide)return;if(slide.dataset.mounted!=='true'){slide.innerHTML=slideMarkup[index];slide.dataset.mounted='true'}prepareImages(slide);slide.querySelectorAll('img[data-src]').forEach(img=>{if(img.src!==new URL(img.dataset.src,location.href).href){img.src=img.dataset.src;img.loading='eager'}})}
+    function unmountSlide(index){if(renderAll||Math.abs(index-current)<=1)return;const slide=slides[index];if(slide?.dataset.mounted==='true'){slide.replaceChildren();delete slide.dataset.mounted}}
+    function hydrateAll(){document.documentElement.classList.add('render-all');slides.forEach((_,index)=>mountSlide(index))}
+    function hydrateDesktop(){if(renderAll){hydrateAll();return}slides.forEach((_,index)=>Math.abs(index-current)<=1?mountSlide(index):unmountSlide(index))}
+    function show(i){if(!slides.length)return;current=Math.max(0,Math.min(i,slides.length-1));slides[current].scrollIntoView({behavior:'auto',inline:'start'});update();if(innerWidth>800)hydrateDesktop()}
+    function update(){slides.forEach((s,i)=>s.classList.toggle('is-active',i===current));counter.textContent=`${pad(current+1)} / ${pad(slides.length)}`;progress.style.width=`${slides.length?(current+1)/slides.length*100:0}%`}
+    addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))show(current+1);if(['ArrowLeft','PageUp'].includes(e.key))show(current-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+    document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);
+    let wheelLock=false;addEventListener('wheel',e=>{if(innerWidth<=800||wheelLock)return;wheelLock=true;show(current+(e.deltaY>0||e.deltaX>0?1:-1));setTimeout(()=>wheelLock=false,250)},{passive:true});
+    let startX=0;deck.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1))},{passive:true});
+    slides.forEach((slide,index)=>{slide.dataset.mounted='true';if(!renderAll&&Math.abs(index-current)>1){slide.replaceChildren();delete slide.dataset.mounted}});
+    let mobileObserver;if(!renderAll&&innerWidth<=800){mobileObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{const index=slides.indexOf(entry.target);if(entry.isIntersecting)mountSlide(index);else unmountSlide(index)}),{rootMargin:'100% 0px',threshold:.01});slides.forEach(slide=>mobileObserver.observe(slide));mountSlide(current);mountSlide(current+1)}else hydrateDesktop();
+    addEventListener('beforeprint',hydrateAll);addEventListener('afterprint',()=>{if(!renderAll){document.documentElement.classList.remove('render-all');innerWidth>800&&hydrateDesktop()}});
+    update();deck.scrollLeft=innerWidth>800?current*innerWidth:0;if(innerWidth<=800&&current)slides[current]?.scrollIntoView({behavior:'auto'});
+  </script>
+</body>
+</html>

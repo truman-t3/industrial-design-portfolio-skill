@@ -6,7 +6,7 @@
 
 [简体中文](README.zh-CN.md) · English
 
-![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.0--rc.1-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-evidence--backed%20HTML%20portfolio-69A36F?style=flat-square)
@@ -22,7 +22,7 @@ An evidence-first Agent Skill for creating, restructuring, and reviewing industr
 - **Evidence before decoration** — every important claim is linked to a source, artifact, or explicit assumption.
 - **Industrial-design depth** — covers users, form, CMF, ergonomics, product architecture, manufacturing, prototyping, and iteration.
 - **Portfolio-native storytelling** — supports a 12–18 page case study, a 20–36 page multi-project portfolio, and short interview cuts.
-- **18 registered layouts** — purpose-built for briefs, evidence walls, concept divergence, selection matrices, CMF, architecture, manufacturing, testing, iteration, and final resolution.
+- **18 copy-ready layouts** — complete HTML fragments for briefs, evidence walls, concept divergence, selection matrices, CMF, architecture, manufacturing, testing, iteration, and final resolution.
 - **AI disclosure by design** — generated concepts cannot silently become fake research, prototypes, CAD, or engineering evidence.
 - **Cross-agent runtime** — works with Codex, Claude Code, Cursor, Gemini CLI, OpenCode, and generic Agent Skills runtimes.
 - **Deterministic quality gates** — includes HTML and manifest validators, a P0–P3 checklist, adapter synchronization, and six executable behavior rubrics.
@@ -154,6 +154,7 @@ Validate a generated portfolio:
 ```bash
 python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
+python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
 ```
 
@@ -180,7 +181,7 @@ No template or source code from `guizang-ppt-skill` is copied into this project.
 
 ## Version
 
-Current release: **v1.1.0**
+Current pre-release: **v1.2.0-rc.1**
 
 - Evidence-first industrial design portfolio workflow
 - MIT licensed for clear reuse

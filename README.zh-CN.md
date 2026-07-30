@@ -6,7 +6,7 @@
 
 简体中文 · [English](README.md)
 
-![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.0--rc.1-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-%E8%AF%81%E6%8D%AE%E5%9E%8B%20HTML%20%E4%BD%9C%E5%93%81%E9%9B%86-69A36F?style=flat-square)
@@ -22,7 +22,7 @@
 - **证据先于装饰**：重要结论必须对应来源、项目材料或明确标注的假设。
 - **真正面向工业设计**：覆盖用户、造型、CMF、人体工学、产品架构、制造、原型与迭代。
 - **作品集叙事工作流**：支持 12–18 页单项目、20–36 页多项目作品集和面试精简版。
-- **18 种专用版式**：覆盖设计任务书、证据墙、方案发散、选择矩阵、CMF、结构、制造、测试、迭代和最终方案。
+- **18 种可直接复制的版式**：提供完整 HTML 骨架，覆盖设计任务书、证据墙、方案发散、选择矩阵、CMF、结构、制造、测试、迭代和最终方案。
 - **内置 AI 披露机制**：AI 概念图不能被悄悄包装成用户研究、真实模型、CAD 或工程证据。
 - **跨 Agent 兼容**：支持 Codex、Claude Code、Cursor、Gemini CLI、OpenCode 和通用 Agent Skills。
 - **确定性的质量门槛**：包含 HTML 与 manifest 验证器、P0–P3 检查表、适配文件同步和六条可执行行为 rubric。
@@ -152,6 +152,7 @@ python scripts/sync_adapters.py --check
 ```bash
 python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
+python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
 ```
 
@@ -178,7 +179,7 @@ python scripts/run_evals.py --all
 
 ## 版本
 
-当前版本：**v1.1.0**
+当前预发布版本：**v1.2.0-rc.1**
 
 - 以证据为核心的工业设计作品集工作流
 - MIT 许可证，明确可复用范围
