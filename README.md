@@ -17,6 +17,20 @@ An evidence-first Agent Skill for creating, restructuring, and reviewing industr
 
 > A polished render shows taste. A strong portfolio shows what you noticed, what you changed, and why the result deserves trust.
 
+## Showcase
+
+![Six-page preview of the fictional Modular Desk Lamp industrial design portfolio](showcase/modular-desk-lamp/previews/readme-showcase.webp)
+
+**Modular Desk Lamp** is a fictional 14-page case study showing how the Skill separates assumptions, concept intent, generated imagery, validation plans, and engineering evidence.
+
+| Input | Skill workflow | Output |
+|---|---|---|
+| Fictional brief and AI-assisted concept visuals | Evidence grading → story map → registered layouts → disclosure checks | Responsive 14-page HTML portfolio |
+
+[Browse the HTML case study](showcase/modular-desk-lamp/index.html) · [Read the storyboard](showcase/modular-desk-lamp/storyboard.md) · [Inspect the evidence manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+
+> **Fictional demonstration:** AI-assisted images illustrate design intent only. They are not user research, physical prototypes, CAD, test results, or engineering proof.
+
 ## What makes it different
 
 - **Evidence before decoration** — every important claim is linked to a source, artifact, or explicit assumption.

@@ -17,6 +17,20 @@
 
 > 精致效果图能展示审美；真正优秀的作品集，要让评审看见你发现了什么、改变了什么，以及为什么这个结果值得相信。
 
+## 示例案例
+
+![虚构模块化桌面工作灯工业设计作品集的六页预览](showcase/modular-desk-lamp/previews/readme-showcase.webp)
+
+**模块化桌面工作灯**是一套虚构的 14 页案例，用于展示 Skill 如何区分假设、概念意图、生成图、验证计划与工程证据。
+
+| 输入 | Skill 工作流 | 输出 |
+|---|---|---|
+| 虚构任务书与 AI 辅助概念视觉 | 证据分级 → 故事地图 → 注册版式 → 披露检查 | 14 页响应式 HTML 作品集 |
+
+[查看 HTML 案例](showcase/modular-desk-lamp/index.html) · [阅读故事板](showcase/modular-desk-lamp/storyboard.md) · [检查证据 manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+
+> **虚构演示声明：** AI 辅助图像只用于表达设计意图，不是用户调研、实体原型、CAD、测试结果或工程证明。
+
 ## 它有什么不同
 
 - **证据先于装饰**：重要结论必须对应来源、项目材料或明确标注的假设。
