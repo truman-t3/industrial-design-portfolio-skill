@@ -9,7 +9,7 @@
 > ⭐ **If this project helped you, a star is the easiest way to say thanks — and helps others find it.**
 > 若这个项目对你有用，点个 Star 就是最简单的鼓励，也能帮更多人发现它。
 
-![Version](https://img.shields.io/badge/version-v1.1.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.0--rc.1-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-evidence--backed%20HTML%20portfolio-69A36F?style=flat-square)
@@ -20,12 +20,26 @@ An evidence-first Agent Skill for creating, restructuring, and reviewing industr
 
 > A polished render shows taste. A strong portfolio shows what you noticed, what you changed, and why the result deserves trust.
 
+## Showcase
+
+![Six-page preview of the fictional Modular Desk Lamp industrial design portfolio](showcase/modular-desk-lamp/previews/readme-showcase.webp)
+
+**Modular Desk Lamp** is a fictional 14-page case study showing how the Skill separates assumptions, concept intent, generated imagery, validation plans, and engineering evidence.
+
+| Input | Skill workflow | Output |
+|---|---|---|
+| Fictional brief and AI-assisted concept visuals | Evidence grading → story map → registered layouts → disclosure checks | Responsive 14-page HTML portfolio |
+
+[Browse the HTML case study](showcase/modular-desk-lamp/index.html) · [Read the storyboard](showcase/modular-desk-lamp/storyboard.md) · [Inspect the evidence manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+
+> **Fictional demonstration:** AI-assisted images illustrate design intent only. They are not user research, physical prototypes, CAD, test results, or engineering proof.
+
 ## What makes it different
 
 - **Evidence before decoration** — every important claim is linked to a source, artifact, or explicit assumption.
 - **Industrial-design depth** — covers users, form, CMF, ergonomics, product architecture, manufacturing, prototyping, and iteration.
 - **Portfolio-native storytelling** — supports a 12–18 page case study, a 20–36 page multi-project portfolio, and short interview cuts.
-- **18 registered layouts** — purpose-built for briefs, evidence walls, concept divergence, selection matrices, CMF, architecture, manufacturing, testing, iteration, and final resolution.
+- **18 copy-ready layouts** — complete HTML fragments for briefs, evidence walls, concept divergence, selection matrices, CMF, architecture, manufacturing, testing, iteration, and final resolution.
 - **AI disclosure by design** — generated concepts cannot silently become fake research, prototypes, CAD, or engineering evidence.
 - **Cross-agent runtime** — works with Codex, Claude Code, Cursor, Gemini CLI, OpenCode, and generic Agent Skills runtimes.
 - **Deterministic quality gates** — includes HTML and manifest validators, a P0–P3 checklist, adapter synchronization, and six executable behavior rubrics.
@@ -157,6 +171,7 @@ Validate a generated portfolio:
 ```bash
 python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
+python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
 ```
 
@@ -183,7 +198,7 @@ No template or source code from `guizang-ppt-skill` is copied into this project.
 
 ## Version
 
-Current release: **v1.1.0**
+Current pre-release: **v1.2.0-rc.1**
 
 - Evidence-first industrial design portfolio workflow
 - MIT licensed for clear reuse

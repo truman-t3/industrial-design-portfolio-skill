@@ -48,7 +48,7 @@ If the user has not specified audience or format, make reasonable assumptions an
 
 - Read [references/story-architecture.md](references/story-architecture.md) when planning page order, project selection, or narrative.
 - Read [references/industrial-design-evidence.md](references/industrial-design-evidence.md) before making research, engineering, manufacturing, test, or impact claims.
-- Read [references/layouts.md](references/layouts.md) before writing HTML. Use only registered layout IDs.
+- Read [references/layouts.md](references/layouts.md) before writing HTML. Use only registered layout IDs and start from the matching fragment under `assets/layouts/`.
 - Read [references/visual-system.md](references/visual-system.md) when selecting theme, typography, color, image treatment, or page rhythm.
 - Read [references/image-policy.md](references/image-policy.md) before generating or substantially editing any visual.
 - Read [references/checklist.md](references/checklist.md) for the final review and severity model.
@@ -136,7 +136,7 @@ Every slide must include:
 </section>
 ```
 
-Use registered structures from `references/layouts.md`. Add local classes only when existing layouts cannot express a required evidence type; document the reason in the manifest.
+Copy each planned page from the matching `<skill-root>/assets/layouts/IDxx.html` fragment, then replace its placeholders and adapt content without changing the evidence contract. Add local classes only when the registered fragments cannot express a required evidence type; document the reason in the manifest.
 
 ### 7. Handle imagery conservatively
 
@@ -173,6 +173,7 @@ Validate the manifest before validating HTML:
 
 ```bash
 python <skill-root>/scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
+python <skill-root>/scripts/validate_layout_library.py
 ```
 
 Then preview in a browser at desktop and narrow widths when browser access exists. Without browser access, report the missing visual QA step instead of claiming it passed. Check at least:

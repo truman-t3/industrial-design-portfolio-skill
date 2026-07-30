@@ -12,6 +12,8 @@ from pathlib import Path
 
 SKILL_NAME = "industrial-design-portfolio"
 PLATFORMS = ("codex", "claude", "cursor", "gemini", "opencode", "agents")
+RUNTIME_FILES = ("SKILL.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "LICENSE")
+RUNTIME_DIRS = ("agents", "assets", "references", "schemas", "scripts")
 
 
 def user_base(platform: str) -> Path:
@@ -61,6 +63,20 @@ def ignored(_directory: str, names: list[str]) -> set[str]:
     return {name for name in names if name in {"__pycache__", ".git", ".DS_Store"} or name.endswith(".pyc")}
 
 
+def copy_runtime(source: Path, target: Path) -> None:
+    target.mkdir(parents=True)
+    for name in RUNTIME_FILES:
+        path = source / name
+        if not path.is_file():
+            raise FileNotFoundError(f"Required runtime file is missing: {name}")
+        shutil.copy2(path, target / name)
+    for name in RUNTIME_DIRS:
+        path = source / name
+        if not path.is_dir():
+            raise FileNotFoundError(f"Required runtime directory is missing: {name}")
+        shutil.copytree(path, target / name, ignore=ignored)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--platform", choices=("auto",) + PLATFORMS, default="auto")
@@ -89,7 +105,7 @@ def main() -> int:
             return 2
         shutil.rmtree(target)
     base.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(source, target, ignore=ignored)
+    copy_runtime(source, target)
     if not (target / "SKILL.md").is_file():
         print("Installation verification failed: SKILL.md missing", file=sys.stderr)
         return 3
@@ -99,4 +115,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

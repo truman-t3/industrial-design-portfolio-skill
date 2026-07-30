@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+tmp/
+
+# Keep browser-ready Showcase assets in Git; retain editable sources locally.
+showcase/**/images/generated/*.png
+showcase/**/previews/*.pdf

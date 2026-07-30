@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "portfolio": {
+    "title": "Modular Desk Lamp — Fictional Skill Showcase",
+    "audience": "Industrial designers evaluating the Skill workflow",
+    "presentation_context": "Repository showcase and browser demo",
+    "confidentiality": "Public fictional demonstration. No real user, company, or project data."
+  },
+  "projects": [
+    {
+      "id": "modular-desk-lamp",
+      "name": "Modular Desk Lamp",
+      "thesis": "Explore a repairable light platform that can shift between task, ambient, and video-call modes in compact workspaces.",
+      "role": "Fictional demonstration authored for the industrial-design-portfolio Skill",
+      "contributions": [
+        "Demonstration story architecture",
+        "Concept direction and disclosure plan",
+        "Portfolio layout mapping"
+      ]
+    }
+  ],
+  "slides": [
+    {"page": 1, "project_id": "modular-desk-lamp", "layout_id": "ID01", "claim_ids": []},
+    {"page": 2, "project_id": "modular-desk-lamp", "layout_id": "ID16", "claim_ids": ["ev-001"]},
+    {"page": 3, "project_id": "modular-desk-lamp", "layout_id": "ID02", "claim_ids": ["ev-001"]},
+    {"page": 4, "project_id": "modular-desk-lamp", "layout_id": "ID03", "claim_ids": ["ev-002", "ev-003", "ev-004"]},
+    {"page": 5, "project_id": "modular-desk-lamp", "layout_id": "ID04", "claim_ids": ["ev-005"]},
+    {"page": 6, "project_id": "modular-desk-lamp", "layout_id": "ID06", "claim_ids": ["ev-006"]},
+    {"page": 7, "project_id": "modular-desk-lamp", "layout_id": "ID07", "claim_ids": ["ev-007"]},
+    {"page": 8, "project_id": "modular-desk-lamp", "layout_id": "ID08", "claim_ids": ["ev-008"]},
+    {"page": 9, "project_id": "modular-desk-lamp", "layout_id": "ID10", "claim_ids": ["ev-009"]},
+    {"page": 10, "project_id": "modular-desk-lamp", "layout_id": "ID12", "claim_ids": ["ev-010"]},
+    {"page": 11, "project_id": "modular-desk-lamp", "layout_id": "ID13", "claim_ids": ["ev-011"]},
+    {"page": 12, "project_id": "modular-desk-lamp", "layout_id": "ID14", "claim_ids": ["ev-012"]},
+    {"page": 13, "project_id": "modular-desk-lamp", "layout_id": "ID15", "claim_ids": ["ev-013"]},
+    {"page": 14, "project_id": "modular-desk-lamp", "layout_id": "ID18", "claim_ids": []}
+  ],
+  "evidence": [
+    {"id": "ev-001", "claim": "A modular desk light could support multiple compact-workspace routines.", "level": "E0", "artifact": "storyboard.md", "source": "Fictional showcase proposition", "authorship": "Skill demonstration", "status": "to_validate"},
+    {"id": "ev-002", "claim": "Screen glare may affect preferred light placement.", "level": "E0", "artifact": "images/generated/lamp-04-scenarios-sheet.webp", "source": "Synthetic scenario for demonstration", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-003", "claim": "Video calls may require a second lighting position.", "level": "E0", "artifact": "images/generated/lamp-04-scenarios-sheet.webp", "source": "Synthetic scenario for demonstration", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-004", "claim": "Limited desk depth may constrain the base footprint.", "level": "E0", "artifact": "images/generated/lamp-04-scenarios-sheet.webp", "source": "Synthetic scenario for demonstration", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-005", "claim": "One movable light head may serve task, ambient, and call modes.", "level": "E0", "artifact": "storyboard.md", "source": "Provisional design insight", "authorship": "Skill demonstration", "status": "to_validate"},
+    {"id": "ev-006", "claim": "Clamp, weighted-base, and rail routes represent distinct architectures.", "level": "E0", "artifact": "images/generated/lamp-06-concepts-sheet.webp", "source": "Fictional concept study", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-007", "claim": "The weighted-base route is the provisional selected direction.", "level": "E0", "artifact": "index.html#decision-matrix", "source": "Illustrative decision matrix", "authorship": "Skill demonstration", "status": "to_validate"},
+    {"id": "ev-008", "claim": "Cylindrical joints and a replaceable sleeve express modularity.", "level": "E0", "artifact": "images/generated/lamp-08-cmf.webp", "source": "Design intent", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-009", "claim": "The concept separates the light head, arm, power module, and base.", "level": "E0", "artifact": "images/generated/lamp-09-conceptual-architecture.webp", "source": "Concept architecture, not engineering evidence", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-010", "claim": "Reach, tipping, joint effort, and glare are planned prototype variables.", "level": "E0", "artifact": "images/generated/lamp-10-validation-plan.webp", "source": "Validation plan", "authorship": "Skill demonstration", "status": "to_validate"},
+    {"id": "ev-011", "claim": "A wider base and shorter lower arm are proposed stability responses.", "level": "E0", "artifact": "images/generated/lamp-11-iteration-pair.webp", "source": "Illustrative iteration, not a tested result", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-012", "claim": "The final visualization represents a concept resolution only.", "level": "E0", "artifact": "images/generated/lamp-12-final-hero.webp", "source": "AI-assisted concept visualization", "authorship": "Skill demonstration", "status": "caveat"},
+    {"id": "ev-013", "claim": "Ergonomics, optics, thermal behavior, cost, and repair remain unresolved.", "level": "E0", "artifact": "storyboard.md", "source": "Declared project limitations", "authorship": "Skill demonstration", "status": "to_validate"}
+  ],
+  "assumptions": [
+    {"id": "as-001", "statement": "Compact-workspace users need one light to support several modes.", "status": "to_validate"},
+    {"id": "as-002", "statement": "Modular replacement would be valuable enough to justify separable components.", "status": "to_validate"}
+  ],
+  "generated_assets": [
+    {"file": "images/generated/lamp-04-scenarios-sheet.webp", "purpose": "Three synthetic use scenarios", "disclosure": "AI-assisted concept visualization · Not research evidence"},
+    {"file": "images/generated/lamp-06-concepts-sheet.webp", "purpose": "Three fictional architecture directions", "disclosure": "AI-assisted concept visualization · Not engineering evidence"},
+    {"file": "images/generated/lamp-08-cmf.webp", "purpose": "Form and CMF intent", "disclosure": "AI-assisted concept visualization · Not CMF approval"},
+    {"file": "images/generated/lamp-09-conceptual-architecture.webp", "purpose": "Conceptual architecture illustration", "disclosure": "AI-assisted concept visualization · Not engineering evidence"},
+    {"file": "images/generated/lamp-10-validation-plan.webp", "purpose": "Future validation-plan illustration", "disclosure": "AI-assisted validation-plan illustration · Not test evidence"},
+    {"file": "images/generated/lamp-11-iteration-pair.webp", "purpose": "Illustrative before-and-after concept comparison", "disclosure": "AI-assisted concept visualization · No physical test performed"},
+    {"file": "images/generated/lamp-12-final-hero.webp", "purpose": "Final concept hero and visual reference", "disclosure": "AI-assisted concept visualization · Not engineering evidence"}
+  ],
+  "unresolved_gaps": [
+    {"id": "gap-001", "gap": "No direct user research", "next_step": "Observe and interview target users with consent."},
+    {"id": "gap-002", "gap": "No physical prototype or stability result", "next_step": "Build weighted-base rigs and document the test method."},
+    {"id": "gap-003", "gap": "No optical, thermal, cost, or manufacturing review", "next_step": "Review with relevant engineers and suppliers."}
+  ]
+}

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -19,6 +20,7 @@ PLACEHOLDERS = (
     "TBD",
     "Lorem ipsum",
 )
+GENERIC_PLACEHOLDER = re.compile(r"\[[A-Z][A-Z0-9_ -]{2,}\]")
 
 
 def issue(level: str, message: str) -> tuple[str, str]:
@@ -32,6 +34,8 @@ def validate(path: Path) -> list[tuple[str, str]]:
     for token in PLACEHOLDERS:
         if token.lower() in text.lower():
             findings.append(issue("P1", f"Unresolved placeholder: {token}"))
+    for token in sorted(set(GENERIC_PLACEHOLDER.findall(text)) - set(PLACEHOLDERS)):
+        findings.append(issue("P1", f"Unresolved placeholder: {token}"))
 
     slides = re.findall(r"<section\b[^>]*class=[\"'][^\"']*\bslide\b[^\"']*[\"'][^>]*>", text, re.I)
     if not slides:
@@ -53,10 +57,43 @@ def validate(path: Path) -> list[tuple[str, str]]:
         if not re.search(r"\balt=[\"'][^\"']+[\"']", tag, re.I):
             findings.append(issue("P1", f"Image {index} has missing or empty alt text."))
 
-    generated_refs = re.findall(r"(?:src=[\"'][^\"']*(?:generated|ai-)[^\"']*[\"']|AI-assisted|AI generated)", text, re.I)
+    generated_refs = re.findall(r"(?:(?:src|data-src)=[\"'][^\"']*(?:generated|ai-)[^\"']*[\"']|AI-assisted|AI generated)", text, re.I)
     disclosures = re.findall(r"AI-assisted concept visualization|Not engineering evidence", text, re.I)
     if generated_refs and not disclosures:
         findings.append(issue("P0", "Generated imagery appears without an AI disclosure."))
+
+    generated_paths = re.findall(r"data-src=[\"']([^\"']*images/generated/[^\"']+)[\"']", text, re.I)
+    direct_generated = re.findall(r"(?<!data-)src=[\"']([^\"']*images/generated/[^\"']+)[\"']", text, re.I)
+    for ref in direct_generated:
+        findings.append(issue("P1", f"Generated image bypasses deferred loading: {ref}"))
+    for ref in sorted(set(generated_paths)):
+        if Path(ref).suffix.lower() != ".webp":
+            findings.append(issue("P1", f"Browser-facing generated image is not WebP: {ref}"))
+        if not (path.parent / ref).is_file():
+            findings.append(issue("P1", f"Deferred image file is missing: {ref}"))
+
+    slide_blocks = re.findall(r"<section\b[^>]*class=[\"'][^\"']*\bslide\b[^\"']*[\"'][^>]*>.*?</section>", text, re.I | re.S)
+    for index, block in enumerate(slide_blocks, start=1):
+        if re.search(r"data-src=[\"'][^\"']*images/generated/", block, re.I) and not re.search(
+            r"AI-assisted|Not engineering evidence|Not research evidence|Not test evidence", block, re.I
+        ):
+            findings.append(issue("P0", f"Slide {index} has generated imagery without a nearby disclosure."))
+
+    manifest_path = path.parent / "portfolio_manifest.json"
+    if generated_paths and manifest_path.is_file():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest_paths = {
+                item.get("file") for item in manifest.get("generated_assets", []) if isinstance(item, dict)
+            }
+            missing = sorted(set(generated_paths) - manifest_paths)
+            stale = sorted(manifest_paths - set(generated_paths))
+            for ref in missing:
+                findings.append(issue("P1", f"Generated image is missing from manifest: {ref}"))
+            for ref in stale:
+                findings.append(issue("P1", f"Manifest generated asset is not used by HTML: {ref}"))
+        except (json.JSONDecodeError, OSError) as exc:
+            findings.append(issue("P1", f"Could not verify generated assets against manifest: {exc}"))
 
     if len(slides) >= 12 and len(layout_counts) < 7:
         findings.append(issue("P2", "A 12+ page case uses fewer than seven distinct layouts."))
@@ -98,4 +135,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
