@@ -15,93 +15,147 @@
 
 </div>
 
-这是一个以证据为核心的工业设计作品集 Agent Skill。它可以把用户研究、草图、CAD、CMF、模型、测试、制造记录和最终效果图，整理成结构清晰的横向 HTML 项目案例，同时不会为了“让项目看起来完整”而虚构不存在的设计过程。
+如果你的项目文件夹里已经有调研笔记、草图、CAD 截图、效果图、模型照片或测试记录，就可以开始。
 
-> 精致效果图能展示审美；真正优秀的作品集，要让评审看见你发现了什么、改变了什么，以及为什么这个结果值得相信。
+把这个文件夹交给 Agent，这个 Skill 会帮助它：
 
-## 示例案例
+1. 从你真正做过的工作里找出最值得讲的故事；
+2. 说明设计选择、备选方案、取舍和你的个人职责；
+3. 找出仍然缺少证明的重要结论；
+4. 整理成可编辑的 HTML 作品集，并可打印为 PDF。
 
-![虚构模块化桌面工作灯工业设计作品集的六页预览](showcase/modular-desk-lamp/previews/readme-showcase.webp)
+它不会为了“让项目看起来完整”而虚构调研、原型、测试、制造决策或项目成果。
 
-**模块化桌面工作灯**是一套虚构的 14 页案例，用于展示 Skill 如何区分假设、概念意图、生成图、验证计划与工程证据。
+## 选择你现在需要的帮助
 
-| 输入 | Skill 工作流 | 输出 |
-|---|---|---|
-| 虚构任务书与 AI 辅助概念视觉 | 证据分级 → 故事地图 → 注册版式 → 披露检查 | 14 页响应式 HTML 作品集 |
-
-[在线打开 14 页 Showcase](https://truman-t3.github.io/industrial-design-portfolio-skill/) · [查看 HTML 源文件](showcase/modular-desk-lamp/index.html) · [阅读故事板](showcase/modular-desk-lamp/storyboard.md) · [检查证据 manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
-
-> **虚构演示声明：** AI 辅助图像只用于表达设计意图，不是用户调研、实体原型、CAD、测试结果或工程证明。
+| 你的情况 | 可以让 Skill 做什么 |
+|---|---|
+| 手上是一个混乱的项目文件夹 | 整理成一套清楚的 12–18 页项目案例 |
+| 已经有一份作品集 | 审查哪些内容该删、该换顺序、该解释或补证据 |
+| 项目太多，不知道选哪些 | 根据职位、学校或目标受众选择项目 |
+| 设计过程不完整 | 区分已有证明、个人回忆、假设和待验证内容 |
 
 ### 30 秒开始
 
 ```bash
 npx skills add truman-t3/industrial-design-portfolio-skill \
-  --skill industrial-design-portfolio --global
+  --global --skill industrial-design-portfolio --yes --copy
 ```
 
 然后把项目文件夹交给 Agent，并发送：
 
 ```text
-使用 $industrial-design-portfolio 审计我的项目证据，并整理成一套
-14 页工业设计案例。所有缺少证据的结论都要明确标注。
+使用 $industrial-design-portfolio 检查我的项目资料，并整理成一套
+14 页工业设计案例。所有仍然缺少证据的内容都要明确标注。
 ```
 
-## 它有什么不同
+## 看看最终效果
 
-- **证据先于装饰**：重要结论必须对应来源、项目材料或明确标注的假设。
-- **真正面向工业设计**：覆盖用户、造型、CMF、人体工学、产品架构、制造、原型与迭代。
-- **作品集叙事工作流**：支持 12–18 页单项目、20–36 页多项目作品集和面试精简版。
-- **18 种可直接复制的版式**：提供完整 HTML 骨架，覆盖设计任务书、证据墙、方案发散、选择矩阵、CMF、结构、制造、测试、迭代和最终方案。
-- **内置 AI 披露机制**：AI 概念图不能被悄悄包装成用户研究、真实模型、CAD 或工程证据。
-- **跨 Agent 兼容**：支持 Codex、Claude Code、Cursor、Gemini CLI、OpenCode 和通用 Agent Skills。
-- **确定性的质量门槛**：包含 HTML 与 manifest 验证器、P0–P3 检查表、适配文件同步和六条可执行行为 rubric。
+![虚构模块化桌面工作灯工业设计作品集的六页预览](showcase/modular-desk-lamp/previews/readme-showcase.webp)
 
-## 作品集工作流
+**模块化桌面工作灯**是一套虚构的 14 页案例，展示零散资料如何变成清楚的设计故事，同时如实标注假设和 AI 辅助图像。
+
+| 开始时有什么 | Skill 会做什么 | 最终得到什么 |
+|---|---|---|
+| 任务书、草图、过程记录、CAD/效果图、原型或测试资料 | 找故事 → 检查依据 → 规划页面 → 制作并审查 | 14 页响应式 HTML 作品集 |
+
+[在线打开 14 页 Showcase](https://truman-t3.github.io/industrial-design-portfolio-skill/) · [查看 HTML 源文件](showcase/modular-desk-lamp/index.html) · [阅读故事板](showcase/modular-desk-lamp/storyboard.md) · [检查证据 manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+
+> **虚构演示声明：** AI 辅助图像只用于表达设计意图，不是用户调研、实体原型、CAD、测试结果或工程证明。
+
+## 它会怎样帮助你
+
+- **找到故事**：明确项目问题、关键转折和最终设计决定。
+- **展示判断力**：说明为什么选择这个方向，以及反馈或测试后改了什么。
+- **写清个人职责**：区分你完成的工作、团队协作和外部提供的素材。
+- **选择合适页面**：使用 18 种工业设计版式组织调研、方案、CMF、结构、制造、测试、迭代和最终成果。
+- **保持诚实**：把假设和 AI 辅助概念图明确标出来，不冒充真实调研或工程证明。
+- **完成可用作品**：生成适合网页浏览、面试讲解和 PDF 导出的响应式作品集。
+
+## 从项目文件夹到作品集
 
 ```mermaid
 flowchart LR
-    A[盘点素材] --> B[划分 E0–E3 证据等级]
-    B --> C[定义项目核心命题]
-    C --> D[建立证据表与叙事表]
-    D --> E[选择登记版式]
-    E --> F[生成 HTML 作品集]
-    F --> G[校验结构与可信度]
-    G --> H[浏览器检查与 PDF 导出]
+    A[收集项目资料] --> B[找到最强故事]
+    B --> C[标出缺口和假设]
+    C --> D[规划页面]
+    D --> E[制作并审查]
+    E --> F[分享 HTML 或导出 PDF]
 ```
 
-工作流从五个相互关联的角度检查项目：
+在这些简单步骤背后，Skill 会检查评审最可能提出的五个问题：
 
-| 角度 | 作品集需要证明什么 |
+| 评审可能会问 | 作品集需要说清什么 |
 |---|---|
-| 用户与情境 | 用户需求来自观察，而不是事后编造 |
-| 工业设计与 CMF | 造型和材料决策服务于明确目标 |
-| 产品架构 | 零件、接口、装配和维修路径合理 |
-| 制造与可行性 | 工艺、成本结论公开其假设条件 |
-| 差异化与学习 | 展示方案、取舍、测试以及真实改变 |
+| 你是否理解了真实需求？ | 情境来自观察或已有资料，而不是事后编造 |
+| 为什么产品要这样造型和使用材料？ | 造型、CMF 和人体工学选择服务于明确目标 |
+| 产品作为系统能否成立？ | 零件、接口、装配和维修路径合理 |
+| 可行性结论是否可信？ | 制造和成本说法公开其假设条件 |
+| 你学到了什么，又改了什么？ | 备选方案、取舍、反馈、测试和迭代清晰可见 |
 
-## 最终产出
+## 你会得到什么
 
 ```text
 portfolio/
-├── index.html                 # 横向翻页、响应式网页作品集
-├── images/                    # 调研、过程、CAD、原型、最终方案
-├── portfolio_manifest.json    # 经 schema 校验的受众、职责、证据、假设、版式记录
-└── source_notes.md            # 来源、署名、AI 披露、待验证问题
+├── index.html                 # 可编辑的响应式作品集
+├── images/                    # 调研、草图、CAD、原型和最终方案
+├── portfolio_manifest.json    # 记录职责、证据和待解决问题，供 Agent 检查
+└── source_notes.md            # 来源、署名、AI 披露和缺失证据
 ```
 
-内置模板是一个单文件 HTML 作品集，支持键盘、滚轮、触屏、减少动效模式以及打印/PDF 导出。
+大多数设计师只需要打开 `index.html` 并整理 `images` 文件夹。另外两个文件用来帮助 Agent 保持结论、署名和缺失证据前后一致。作品集支持键盘、滚轮、触屏、减少动效模式以及打印/PDF 导出。
 
-## 快速安装
+## 安装
 
-### Skills CLI
+选择一种方式即可。大多数设计师只需要方式 A 或 B。
+
+### 方式 A：直接让 Agent 安装
+
+不需要自己输入终端命令。把下面这段话发送给 Codex，或其他能够安装 Skill 的 Agent：
+
+```text
+请为当前用户安装下面仓库中的 industrial-design-portfolio：
+https://github.com/truman-t3/industrial-design-portfolio-skill
+
+安装后请确认 Skill 名称是 industrial-design-portfolio，
+并告诉我是否需要新建一个会话。
+```
+
+### 方式 B：使用 Skills CLI
+
+这种方式需要 [Node.js 18 或更高版本](https://nodejs.org/)，不需要提前全局安装 CLI。
+
+先确认仓库可以被识别：
+
+```bash
+npx skills add truman-t3/industrial-design-portfolio-skill --list
+```
+
+为 Codex 全局安装：
 
 ```bash
 npx skills add truman-t3/industrial-design-portfolio-skill \
-  --skill industrial-design-portfolio --global
+  --global --agent codex --skill industrial-design-portfolio --yes --copy
 ```
 
-### 克隆并安装
+如果使用 Claude Code，把 `codex` 换成 `claude-code`。也可以让 CLI 交互选择支持的 Agent：
+
+```bash
+npx skills add truman-t3/industrial-design-portfolio-skill --all
+```
+
+检查安装或更新已经安装的 Skill：
+
+```bash
+npx skills list --global --agent codex
+npx skills update --global --yes
+```
+
+安装或更新后，请新建一个 Agent 会话，让技能列表完整刷新。
+
+### 方式 C：克隆并使用内置安装器
+
+如果需要明确指定安装位置，或者不使用 Node.js，可以使用这种方式：
 
 ```bash
 git clone https://github.com/truman-t3/industrial-design-portfolio-skill.git
@@ -115,7 +169,7 @@ python scripts/install_skill.py --platform gemini --scope user
 python scripts/install_skill.py --platform opencode --scope user
 ```
 
-安装到当前项目的通用目录：
+安装到当前项目的 Agent 通用目录：
 
 ```bash
 python scripts/install_skill.py --platform agents --scope project
