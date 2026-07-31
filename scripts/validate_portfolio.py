@@ -56,6 +56,11 @@ def validate(path: Path) -> list[tuple[str, str]]:
     for index, tag in enumerate(image_tags, start=1):
         if not re.search(r"\balt=[\"'][^\"']+[\"']", tag, re.I):
             findings.append(issue("P1", f"Image {index} has missing or empty alt text."))
+        direct_src = re.search(r"(?<!data-)\bsrc=[\"']([^\"']+)[\"']", tag, re.I)
+        if direct_src and not direct_src.group(1).lower().startswith("data:") and not re.search(
+            r"(?:generated|ai-)", direct_src.group(1), re.I
+        ):
+            findings.append(issue("P2", f"Image {index} loads eagerly; prefer data-src for the lightweight page window."))
 
     generated_refs = re.findall(r"(?:(?:src|data-src)=[\"'][^\"']*(?:generated|ai-)[^\"']*[\"']|AI-assisted|AI generated)", text, re.I)
     disclosures = re.findall(r"AI-assisted concept visualization|Not engineering evidence", text, re.I)

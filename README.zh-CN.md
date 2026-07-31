@@ -6,7 +6,7 @@
 
 简体中文 · [English](README.md)
 
-![Version](https://img.shields.io/badge/version-v1.2.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.1-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-%E8%AF%81%E6%8D%AE%E5%9E%8B%20HTML%20%E4%BD%9C%E5%93%81%E9%9B%86-69A36F?style=flat-square)
@@ -184,9 +184,14 @@ python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
 python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
+python -m pip install --requirement requirements-test.txt
+python -m unittest discover -s tests -p "test_*.py" -v
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
-`run_evals.py` 会把结构化评估观察结果与六条 rubric 对照；它不会声称自己执行了模型。P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
+`run_evals.py` 会把结构化评估观察结果与六条 rubric 对照；它不会声称自己执行了模型。Python 测试会检查 schema、六平台安装矩阵、版本一致性和轻量模板契约；Playwright 会检查 Showcase 导航、延迟挂载、移动端布局和完整渲染导出行为。P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
 
 ## 设计原则
 
@@ -209,7 +214,7 @@ python scripts/run_evals.py --all
 
 ## 版本
 
-当前正式版本：**v1.2.0**
+当前正式版本：**v1.2.1**
 
 - 以证据为核心的工业设计作品集工作流
 - MIT 许可证，明确可复用范围
@@ -218,3 +223,4 @@ python scripts/run_evals.py --all
 - 18 种工业设计专用登记版式
 - 跨 Agent 入口与安装器
 - HTML/manifest 验证器与六条可执行行为 rubric
+- 跨平台 Python 测试与 Chromium 浏览器行为测试

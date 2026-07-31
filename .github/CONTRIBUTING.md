@@ -24,6 +24,11 @@ python scripts/validate_layout_library.py
 python scripts/validate_manifest.py showcase/modular-desk-lamp/portfolio_manifest.json
 python scripts/validate_portfolio.py showcase/modular-desk-lamp/index.html
 python scripts/run_evals.py --all
+python -m pip install --requirement requirements-test.txt
+python -m unittest discover -s tests -p "test_*.py" -v
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
 Keep pull requests small, explain user impact, disclose AI-assisted assets, and include screenshots when visual output changes.

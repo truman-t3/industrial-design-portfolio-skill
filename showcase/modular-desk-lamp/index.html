@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
   <title>Modular Desk Lamp · Fictional Skill Showcase</title>
   <style>
     :root{
@@ -96,7 +97,7 @@
     </section>
 
     <section class="slide theme-dark" data-layout="ID18" data-project="modular-desk-lamp">
-      <div class="slide-inner"><p class="eyebrow">INDUSTRIAL-DESIGN-PORTFOLIO SKILL</p><div class="spacer"></div><h1 class="title-hero">Show the judgment. Label the unknowns.</h1><div class="rule"></div><div class="grid-3 brief-grid"><div><span class="label">PROJECT</span><p>Fictional demonstration</p></div><div><span class="label">SOURCE</span><p>truman-t3 / industrial-design-portfolio-skill</p></div><div><span class="label">STATUS</span><p>Local v1.2 showcase draft</p></div></div></div>
+      <div class="slide-inner"><p class="eyebrow">INDUSTRIAL-DESIGN-PORTFOLIO SKILL</p><div class="spacer"></div><h1 class="title-hero">Show the judgment. Label the unknowns.</h1><div class="rule"></div><div class="grid-3 brief-grid"><div><span class="label">PROJECT</span><p>Fictional demonstration</p></div><div><span class="label">SOURCE</span><p>truman-t3 / industrial-design-portfolio-skill</p></div><div><span class="label">STATUS</span><p>Public Skill Showcase · Not engineering evidence</p></div></div></div>
     </section>
   </main>
   <div class="progress" id="progress"></div>
@@ -117,7 +118,7 @@
     let startX=0;deck.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1))},{passive:true});
     slides.forEach((slide,index)=>{slide.dataset.mounted='true';if(!renderAll&&Math.abs(index-current)>1){slide.replaceChildren();delete slide.dataset.mounted}});
     let mobileObserver;if(!renderAll&&innerWidth<=800){mobileObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{const index=slides.indexOf(entry.target);if(entry.isIntersecting)mountSlide(index);else unmountSlide(index)}),{rootMargin:'100% 0px',threshold:.01});slides.forEach(slide=>mobileObserver.observe(slide));mountSlide(current);mountSlide(current+1)}else hydrateDesktop();
-    addEventListener('beforeprint',hydrateAll);addEventListener('afterprint',()=>{if(!renderAll){document.documentElement.classList.remove('render-all');innerWidth>800&&hydrateDesktop()}});
+    addEventListener('beforeprint',hydrateAll);addEventListener('afterprint',()=>{if(!renderAll){document.documentElement.classList.remove('render-all');hydrateDesktop()}});
     update();deck.scrollLeft=innerWidth>800?current*innerWidth:0;if(innerWidth<=800&&current)slides[current]?.scrollIntoView({behavior:'auto'});
   </script>
 </body>

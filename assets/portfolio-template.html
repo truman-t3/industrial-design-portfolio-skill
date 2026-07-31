@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
   <title>[PORTFOLIO_TITLE] · [DESIGNER_NAME]</title>
   <style>
     :root{
@@ -13,8 +14,8 @@
       --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
     }
     *{box-sizing:border-box} html,body{margin:0;background:#0d0d0d;color:var(--ink);font-family:var(--sans)}
-    body{overflow:hidden}.deck{display:flex;width:100vw;height:100svh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}.deck::-webkit-scrollbar{display:none}
-    .slide{position:relative;flex:0 0 100vw;height:100svh;scroll-snap-align:start;overflow:hidden;background:var(--paper)}
+    body{overflow:hidden}.deck{display:flex;width:100vw;height:100svh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:auto;scrollbar-width:none}.deck::-webkit-scrollbar{display:none}
+    .slide{position:relative;flex:0 0 100vw;height:100svh;scroll-snap-align:start;overflow:hidden;background:var(--paper);content-visibility:auto;contain-intrinsic-size:100vw 100svh}
     .slide::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:8.333vw 8.333vw;opacity:.12}
     .slide-inner{position:relative;z-index:1;height:100%;padding:clamp(54px,6vh,88px) var(--pad) clamp(72px,9vh,118px);display:flex;flex-direction:column;gap:clamp(18px,2.4vh,34px)}
     .theme-dark{--ink:#f1efe8;--paper:#171717;--paper-2:#272522;--muted:#b8b4aa;--line:rgba(241,239,232,.18)}
@@ -28,12 +29,13 @@
     figure{margin:0;min-width:0;display:flex;flex-direction:column;gap:9px}.frame{min-height:0}.frame img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:var(--paper-2)}.frame.contain img{object-fit:contain}.evidence-grid .frame img{height:min(48vh,520px)}.compare-grid .frame img{height:min(44vh,480px)}figcaption{color:var(--muted);text-transform:none;letter-spacing:.02em}
     .swatches{display:flex;gap:12px}.swatch{width:clamp(54px,6vw,100px);aspect-ratio:1;border:1px solid var(--line)}
     .hero-frame{flex:1;min-height:0}.hero-frame img{height:100%;object-fit:cover}.data-table{width:100%;border-collapse:collapse;font-size:clamp(13px,1.05vw,19px);line-height:1.4}.data-table th,.data-table td{border-top:1px solid var(--line);padding:clamp(10px,1.2vw,18px) 12px;text-align:left;vertical-align:top}.data-table thead th{font:700 clamp(10px,.8vw,14px)/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}.data-table tbody th{font-family:var(--mono);color:var(--accent)}
-    .chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:#eee;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);font:12px var(--mono)}
+    .chrome{position:fixed;z-index:20;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;color:#eee;background:rgba(10,10,10,.96);font:12px var(--mono)}
     .controls{display:flex;gap:8px}.controls button{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;width:34px;height:30px;cursor:pointer}.progress{position:absolute;left:0;bottom:54px;height:2px;background:var(--accent);width:0;transition:width .25s ease}
     [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .48s ease,transform .48s ease}.slide.is-active [data-reveal]{opacity:1;transform:none}
-    @media(max-width:800px){body{overflow:auto}.deck{display:block;overflow:visible;height:auto}.slide{height:auto;min-height:100svh;overflow:visible}.grid-4,.grid-3,.grid-2,.brief-grid,.evidence-grid,.compare-grid{grid-template-columns:1fr}.slide-inner{height:auto;min-height:100svh}.chrome{display:none}.frame img,.evidence-grid .frame img,.compare-grid .frame img,.hero-frame img{height:auto;max-height:62vh}.data-table{display:block;overflow-x:auto}}
+    .render-all .slide{content-visibility:visible;contain-intrinsic-size:none}
+    @media(max-width:800px){body{overflow:auto}.deck{display:block;overflow:visible;height:auto}.slide{height:auto;min-height:100svh;overflow:hidden}.grid-4,.grid-3,.grid-2,.brief-grid,.evidence-grid,.compare-grid{grid-template-columns:1fr}.slide-inner{height:auto;min-height:100svh;min-width:0}.slide-inner>*{min-width:0}.chrome{display:none}.frame img,.evidence-grid .frame img,.compare-grid .frame img,.hero-frame img{height:auto;max-height:62vh}.data-table{display:block;overflow-x:auto}}
     @media(prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}[data-reveal]{opacity:1;transform:none;transition:none}}
-    @media print{@page{size:16in 9in;margin:0}body{overflow:visible;background:#fff}.deck{display:block;height:auto;overflow:visible}.slide{width:16in;height:9in;break-after:page}.chrome,.progress{display:none}[data-reveal]{opacity:1;transform:none}}
+    @media print{@page{size:16in 9in;margin:0}body{overflow:visible;background:#fff}.deck{display:block;height:auto;overflow:visible}.slide{width:16in;height:9in;break-after:page;content-visibility:visible;contain-intrinsic-size:none}.chrome,.progress{display:none}[data-reveal]{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -46,14 +48,23 @@
     <div class="controls"><button id="prev" aria-label="Previous page">←</button><span id="counter">01 / 01</span><button id="next" aria-label="Next page">→</button></div>
   </nav>
   <script>
-    const deck=document.querySelector('#deck');const slides=[...document.querySelectorAll('.slide')];const counter=document.querySelector('#counter');const progress=document.querySelector('#progress');let current=0;
+    const deck=document.querySelector('#deck');const slides=[...document.querySelectorAll('.slide')];const slideMarkup=slides.map(slide=>slide.innerHTML);const counter=document.querySelector('#counter');const progress=document.querySelector('#progress');const params=new URLSearchParams(location.search);const requestedPage=Number(params.get('page'));const renderAll=params.get('render')==='all';const placeholder='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';let current=Number.isFinite(requestedPage)&&requestedPage>0?requestedPage-1:0;current=Math.max(0,Math.min(current,slides.length-1));
     const pad=n=>String(n).padStart(2,'0');
-    function show(i){if(!slides.length)return;current=Math.max(0,Math.min(i,slides.length-1));slides[current].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',inline:'start'});update()}
+    function prepareImages(slide){slide.querySelectorAll('img[data-src]').forEach(img=>{if(!img.src){img.src=placeholder;img.loading='lazy';img.decoding='async'}})}
+    function mountSlide(index){const slide=slides[index];if(!slide)return;if(slide.dataset.mounted!=='true'){slide.innerHTML=slideMarkup[index];slide.dataset.mounted='true'}prepareImages(slide);slide.querySelectorAll('img[data-src]').forEach(img=>{if(img.src!==new URL(img.dataset.src,location.href).href){img.src=img.dataset.src;img.loading='eager'}})}
+    function unmountSlide(index){if(renderAll||Math.abs(index-current)<=1)return;const slide=slides[index];if(slide?.dataset.mounted==='true'){slide.replaceChildren();delete slide.dataset.mounted}}
+    function hydrateAll(){document.documentElement.classList.add('render-all');slides.forEach((_,index)=>mountSlide(index))}
+    function hydrateDesktop(){if(renderAll){hydrateAll();return}slides.forEach((_,index)=>Math.abs(index-current)<=1?mountSlide(index):unmountSlide(index))}
+    function show(i){if(!slides.length)return;current=Math.max(0,Math.min(i,slides.length-1));slides[current].scrollIntoView({behavior:'auto',inline:'start'});update();if(innerWidth>800)hydrateDesktop()}
     function update(){slides.forEach((s,i)=>s.classList.toggle('is-active',i===current));counter.textContent=`${pad(current+1)} / ${pad(slides.length)}`;progress.style.width=`${slides.length?(current+1)/slides.length*100:0}%`}
     addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))show(current+1);if(['ArrowLeft','PageUp'].includes(e.key))show(current-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
     document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);
-    let wheelLock=false;addEventListener('wheel',e=>{if(innerWidth<=800||wheelLock)return;wheelLock=true;show(current+(e.deltaY>0||e.deltaX>0?1:-1));setTimeout(()=>wheelLock=false,500)},{passive:true});
-    let startX=0;deck.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1))},{passive:true});update();
+    let wheelLock=false;addEventListener('wheel',e=>{if(innerWidth<=800||wheelLock)return;wheelLock=true;show(current+(e.deltaY>0||e.deltaX>0?1:-1));setTimeout(()=>wheelLock=false,250)},{passive:true});
+    let startX=0;deck.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1))},{passive:true});
+    slides.forEach((slide,index)=>{slide.dataset.mounted='true';if(!renderAll&&Math.abs(index-current)>1){slide.replaceChildren();delete slide.dataset.mounted}});
+    let mobileObserver;if(!renderAll&&innerWidth<=800){mobileObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{const index=slides.indexOf(entry.target);if(entry.isIntersecting)mountSlide(index);else unmountSlide(index)}),{rootMargin:'100% 0px',threshold:.01});slides.forEach(slide=>mobileObserver.observe(slide));mountSlide(current);mountSlide(current+1)}else hydrateDesktop();
+    addEventListener('beforeprint',hydrateAll);addEventListener('afterprint',()=>{if(!renderAll){document.documentElement.classList.remove('render-all');hydrateDesktop()}});
+    update();deck.scrollLeft=innerWidth>800?current*innerWidth:0;if(innerWidth<=800&&current)slides[current]?.scrollIntoView({behavior:'auto'});
   </script>
 </body>
 </html>
