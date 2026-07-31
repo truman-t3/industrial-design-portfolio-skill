@@ -1,0 +1,64 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: ${{ matrix.os }} · Python 3.11
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check generated adapters
+        run: python scripts/sync_adapters.py --check
+
+      - name: Validate layout library
+        run: python scripts/validate_layout_library.py
+
+      - name: Validate Showcase manifest
+        run: python scripts/validate_manifest.py showcase/modular-desk-lamp/portfolio_manifest.json
+
+      - name: Validate Showcase portfolio
+        run: python scripts/validate_portfolio.py showcase/modular-desk-lamp/index.html
+
+      - name: Run behavior rubrics
+        run: python scripts/run_evals.py --all
+
+      - name: Smoke-test runtime installation
+        run: >-
+          python scripts/install_skill.py
+          --platform agents
+          --dest "${{ runner.temp }}/id-skill-smoke"
+
+      - name: Verify runtime whitelist
+        run: >-
+          python -c "from pathlib import Path;
+          p=Path(r'${{ runner.temp }}')/'id-skill-smoke'/'industrial-design-portfolio';
+          required=['SKILL.md','AGENTS.md','CLAUDE.md','GEMINI.md','VERSION','LICENSE','agents','assets','references','schemas','scripts'];
+          forbidden=['showcase','evals','README.md','README.zh-CN.md','requirements-dev.txt'];
+          missing=[x for x in required if not (p/x).exists()];
+          leaked=[x for x in forbidden if (p/x).exists()];
+          assert not missing, f'Missing runtime files: {missing}';
+          assert not leaked, f'Non-runtime files leaked into installation: {leaked}';
+          print('Runtime whitelist verified')"

@@ -1,0 +1,32 @@
+name: Feature request · 功能建议
+description: Propose a focused improvement to the Skill, layouts, validation, or distribution.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Design problem · 设计问题
+      description: What portfolio task or failure mode should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior · 建议行为
+      description: Describe the desired input, workflow, and output.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Example or evidence · 示例或依据
+      description: Add a sanitized example, screenshot, or reference if available.
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Project principles · 项目原则
+      options:
+        - label: This proposal can preserve evidence grading and AI disclosure. / 此建议能够保持证据分级与 AI 披露原则。
+          required: true
