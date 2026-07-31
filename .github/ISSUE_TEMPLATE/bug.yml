@@ -1,0 +1,49 @@
+name: Bug report · 问题报告
+description: Report a reproducible problem in the Skill, installer, validator, layout, or Showcase.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area · 范围
+      options:
+        - Skill workflow
+        - Installer or adapter
+        - Validator or eval
+        - Layout or HTML template
+        - Showcase or documentation
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened? · 发生了什么？
+      description: Include the command or prompt, expected behavior, and actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction · 复现步骤
+      placeholder: |
+        1. Install with …
+        2. Run …
+        3. Observe …
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment · 环境
+      description: Agent runtime, operating system, Python version, and browser if relevant.
+    validations:
+      required: true
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Evidence safety · 证据安全
+      options:
+        - label: I removed private project material and personal data from this report. / 我已移除私密项目材料和个人信息。
+          required: true

@@ -13,6 +13,8 @@ English · 简体中文（本页下方）
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-evidence--backed%20HTML%20portfolio-69A36F?style=flat-square)
+[![Validation](https://github.com/truman-t3/industrial-design-portfolio-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/truman-t3/industrial-design-portfolio-skill/actions/workflows/validate.yml)
+[![Live Demo](https://img.shields.io/badge/live_demo-open_showcase-1C67D2?style=flat-square)](https://truman-t3.github.io/industrial-design-portfolio-skill/)
 
 </div>
 
@@ -30,9 +32,23 @@ An evidence-first Agent Skill for creating, restructuring, and reviewing industr
 |---|---|---|
 | Fictional brief and AI-assisted concept visuals | Evidence grading → story map → registered layouts → disclosure checks | Responsive 14-page HTML portfolio |
 
-[Browse the HTML case study](showcase/modular-desk-lamp/index.html) · [Read the storyboard](showcase/modular-desk-lamp/storyboard.md) · [Inspect the evidence manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+[Open the live 14-page Showcase](https://truman-t3.github.io/industrial-design-portfolio-skill/) · [View the HTML source](showcase/modular-desk-lamp/index.html) · [Read the storyboard](showcase/modular-desk-lamp/storyboard.md) · [Inspect the evidence manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
 
 > **Fictional demonstration:** AI-assisted images illustrate design intent only. They are not user research, physical prototypes, CAD, test results, or engineering proof.
+
+### 30-second start
+
+```bash
+npx skills add truman-t3/industrial-design-portfolio-skill \
+  --skill industrial-design-portfolio --global
+```
+
+Then give your Agent a project folder and say:
+
+```text
+Use $industrial-design-portfolio to audit my evidence and turn it into
+a 14-page industrial design case study. Mark every unsupported claim.
+```
 
 ## What makes it different
 
@@ -234,9 +250,23 @@ English · 简体中文
 |---|---|---|
 | 虚构任务书与 AI 辅助概念视觉 | 证据分级 → 故事地图 → 注册版式 → 披露检查 | 14 页响应式 HTML 作品集 |
 
-[查看 HTML 案例](showcase/modular-desk-lamp/index.html) · [阅读故事板](showcase/modular-desk-lamp/storyboard.md) · [检查证据 manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
+[在线打开 14 页 Showcase](https://truman-t3.github.io/industrial-design-portfolio-skill/) · [查看 HTML 源文件](showcase/modular-desk-lamp/index.html) · [阅读故事板](showcase/modular-desk-lamp/storyboard.md) · [检查证据 manifest](showcase/modular-desk-lamp/portfolio_manifest.json)
 
 > **虚构演示声明：** AI 辅助图像只用于表达设计意图，不是用户调研、实体原型、CAD、测试结果或工程证明。
+
+### 30 秒开始
+
+```bash
+npx skills add truman-t3/industrial-design-portfolio-skill \
+  --skill industrial-design-portfolio --global
+```
+
+然后把项目文件夹交给 Agent，并发送：
+
+```text
+使用 $industrial-design-portfolio 审计我的项目证据，并整理成一套
+14 页工业设计案例。所有缺少证据的结论都要明确标注。
+```
 
 ## 它有什么不同
 
