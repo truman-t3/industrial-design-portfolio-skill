@@ -51,6 +51,9 @@ Users may provide brand colors, but constrain them to one primary accent plus ne
 - Use motion only to reveal sequence or hierarchy.
 - Keep transitions between 180-500 ms and respect reduced-motion preferences.
 - Ensure every page is fully understandable when motion is disabled.
+- Keep scrolling immediate by default; do not add smooth scrolling or backdrop filters to the navigation shell.
+- Use `data-src` for local raster images so only the current page and its neighbors decode on desktop.
+- Preserve `?page=N` for direct page entry and `?render=all` for screenshots and PDF export.
+- Mount all pages before printing, then restore the adjacent-page window after printing.
 - On narrow screens, stack grids and allow vertical scrolling within a slide rather than shrinking text below legibility.
 - For PDF export, hide navigation and preserve a 16:9 page box.
-

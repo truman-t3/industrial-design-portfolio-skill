@@ -149,6 +149,12 @@ Before placing an image, decide:
 - its target slot and ratio;
 - its caption, source, authorship, and evidence level.
 
+Place local raster images with `data-src` rather than `src` so the template can defer decoding outside the active page window:
+
+```html
+<img data-src="images/process/prototype-test.webp" alt="Prototype test setup with labeled fixture">
+```
+
 Generated imagery is optional. If used, follow `references/image-policy.md`, save it under `images/generated/`, and add an adjacent disclosure.
 
 ### 8. Preserve visual rhythm
@@ -159,6 +165,7 @@ Generated imagery is optional. If used, follow `references/image-policy.md`, sav
 - Reserve the strongest image for the project opening or resolution, not both.
 - Keep captions close to the evidence they describe.
 - Use real numbers only; do not add decorative KPIs.
+- Keep the template's adjacent-page mounting, `?page=N`, and `?render=all` behavior intact.
 
 ### 9. Validate and preview
 

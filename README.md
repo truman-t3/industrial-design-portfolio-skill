@@ -9,7 +9,7 @@ English · 简体中文（本页下方）
 > ⭐ **If this project helped you, a star is the easiest way to say thanks — and helps others find it.**
 > 若这个项目对你有用，点个 Star 就是最简单的鼓励，也能帮更多人发现它。
 
-![Version](https://img.shields.io/badge/version-v1.2.0-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.1-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-evidence--backed%20HTML%20portfolio-69A36F?style=flat-square)
@@ -189,9 +189,14 @@ python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
 python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
+python -m pip install --requirement requirements-test.txt
+python -m unittest discover -s tests -p "test_*.py" -v
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
-`run_evals.py` checks structured evaluator observations against the six bundled rubrics; it does not claim to execute a model. Delivery is blocked by P0 credibility failures or P1 comprehension/accessibility failures. P2 and P3 findings are reported as design polish.
+`run_evals.py` checks structured evaluator observations against the six bundled rubrics; it does not claim to execute a model. The Python suite checks the schema, installer matrix, version consistency, and lightweight template contract. Playwright checks Showcase navigation, deferred mounting, mobile layout, and full-render export behavior. Delivery is blocked by P0 credibility failures or P1 comprehension/accessibility failures. P2 and P3 findings are reported as design polish.
 
 ## Design principles
 
@@ -214,7 +219,7 @@ No template or source code from `guizang-ppt-skill` is copied into this project.
 
 ## Version
 
-Current release: **v1.2.0**
+Current release: **v1.2.1**
 
 - Evidence-first industrial design portfolio workflow
 - MIT licensed for clear reuse
@@ -223,6 +228,7 @@ Current release: **v1.2.0**
 - 18 registered industrial design layouts
 - Cross-agent adapters and installer
 - Structural validator and six executable behavior rubrics
+- Cross-platform Python tests and Chromium behavior tests
 
 ---
 
@@ -405,9 +411,14 @@ python scripts/validate_manifest.py path/to/portfolio/portfolio_manifest.json
 python scripts/validate_portfolio.py path/to/portfolio/index.html
 python scripts/validate_layout_library.py
 python scripts/run_evals.py --all
+python -m pip install --requirement requirements-test.txt
+python -m unittest discover -s tests -p "test_*.py" -v
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
-`run_evals.py` 会把结构化评估观察结果与六条 rubric 对照；它不会声称自己执行了模型。P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
+`run_evals.py` 会把结构化评估观察结果与六条 rubric 对照；它不会声称自己执行了模型。Python 测试会检查 schema、六平台安装矩阵、版本一致性和轻量模板契约；Playwright 会检查 Showcase 导航、延迟挂载、移动端布局和完整渲染导出行为。P0 可信度问题和 P1 理解/可用性问题会阻止交付；P2、P3 作为设计完善建议报告。
 
 ## 设计原则
 
@@ -430,7 +441,7 @@ python scripts/run_evals.py --all
 
 ## 版本
 
-当前正式版本：**v1.2.0**
+当前正式版本：**v1.2.1**
 
 - 以证据为核心的工业设计作品集工作流
 - MIT 许可证，明确可复用范围
@@ -439,3 +450,4 @@ python scripts/run_evals.py --all
 - 18 种工业设计专用登记版式
 - 跨 Agent 入口与安装器
 - HTML/manifest 验证器与六条可执行行为 rubric
+- 跨平台 Python 测试与 Chromium 浏览器行为测试
