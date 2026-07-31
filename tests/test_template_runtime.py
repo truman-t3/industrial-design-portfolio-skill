@@ -1,3 +1,4 @@
+import re
 import unittest
 from pathlib import Path
 
@@ -32,6 +33,17 @@ class TemplateRuntimeTests(unittest.TestCase):
         self.assertNotIn("backdrop-filter", self.template)
         self.assertNotIn("scroll-behavior:smooth", self.template)
         self.assertNotIn("behavior:'smooth'", self.template)
+
+    def test_template_and_showcase_share_the_same_runtime(self):
+        showcase = (
+            ROOT / "showcase" / "modular-desk-lamp" / "index.html"
+        ).read_text(encoding="utf-8")
+        pattern = re.compile(r"<script>\s*(.*?)\s*</script>", re.DOTALL)
+        template_runtime = pattern.search(self.template)
+        showcase_runtime = pattern.search(showcase)
+        self.assertIsNotNone(template_runtime)
+        self.assertIsNotNone(showcase_runtime)
+        self.assertEqual(template_runtime.group(1), showcase_runtime.group(1))
 
 
 if __name__ == "__main__":

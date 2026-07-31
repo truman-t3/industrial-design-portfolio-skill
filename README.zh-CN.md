@@ -6,7 +6,7 @@
 
 简体中文 · [English](README.md)
 
-![Version](https://img.shields.io/badge/version-v1.2.2-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.2.3-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-%E8%AF%81%E6%8D%AE%E5%9E%8B%20HTML%20%E4%BD%9C%E5%93%81%E9%9B%86-69A36F?style=flat-square)
@@ -214,7 +214,7 @@ npm run test:browser
 
 ## 版本
 
-当前正式版本：**v1.2.2**
+当前正式版本：**v1.2.3**
 
 - 以证据为核心的工业设计作品集工作流
 - MIT 许可证，明确可复用范围

@@ -63,10 +63,13 @@ jobs:
           p=Path(r'${{ runner.temp }}')/'id-skill-smoke'/'industrial-design-portfolio';
           required=['SKILL.md','AGENTS.md','CLAUDE.md','GEMINI.md','VERSION','LICENSE','agents','assets','references','schemas','scripts'];
           forbidden=['showcase','evals','tests','README.md','README.zh-CN.md','requirements-test.txt','package.json','package-lock.json','playwright.config.mjs','node_modules'];
+          runtime_scripts={'validate_layout_library.py','validate_manifest.py','validate_portfolio.py'};
           missing=[x for x in required if not (p/x).exists()];
           leaked=[x for x in forbidden if (p/x).exists()];
+          installed_scripts={x.name for x in (p/'scripts').iterdir()};
           assert not missing, f'Missing runtime files: {missing}';
           assert not leaked, f'Non-runtime files leaked into installation: {leaked}';
+          assert installed_scripts == runtime_scripts, f'Unexpected runtime scripts: {installed_scripts}';
           print('Runtime whitelist verified')"
 
   browser:
@@ -90,6 +93,9 @@ jobs:
 
       - name: Install Node dependencies
         run: npm ci
+
+      - name: Verify npx skills discovery
+        run: npx --yes skills@1.5.19 add . --list
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium

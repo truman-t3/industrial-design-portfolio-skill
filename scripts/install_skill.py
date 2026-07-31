@@ -13,7 +13,8 @@ from pathlib import Path
 SKILL_NAME = "industrial-design-portfolio"
 PLATFORMS = ("codex", "claude", "cursor", "gemini", "opencode", "agents")
 RUNTIME_FILES = ("SKILL.md", "AGENTS.md", "CLAUDE.md", "GEMINI.md", "VERSION", "LICENSE")
-RUNTIME_DIRS = ("agents", "assets", "references", "schemas", "scripts")
+RUNTIME_DIRS = ("agents", "assets", "references", "schemas")
+RUNTIME_SCRIPTS = ("validate_layout_library.py", "validate_manifest.py", "validate_portfolio.py")
 
 
 def user_base(platform: str) -> Path:
@@ -75,6 +76,13 @@ def copy_runtime(source: Path, target: Path) -> None:
         if not path.is_dir():
             raise FileNotFoundError(f"Required runtime directory is missing: {name}")
         shutil.copytree(path, target / name, ignore=ignored)
+    scripts_target = target / "scripts"
+    scripts_target.mkdir()
+    for name in RUNTIME_SCRIPTS:
+        path = source / "scripts" / name
+        if not path.is_file():
+            raise FileNotFoundError(f"Required runtime script is missing: scripts/{name}")
+        shutil.copy2(path, scripts_target / name)
 
 
 def main() -> int:
