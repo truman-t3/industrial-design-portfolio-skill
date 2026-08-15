@@ -8,6 +8,18 @@ This is a fictional demonstration project created to show how the Skill structur
 - Every generated visual is labeled next to the image in the finished portfolio.
 - All unresolved claims remain in the manifest with `caveat` or `to_validate` status.
 
+## Public reproduction chain
+
+The repository includes the materials needed to inspect or repeat the editorial workflow:
+
+- `input/brief.md` — the only intake artifact;
+- `input/asset-inventory.json` — separates intake material, later generated visuals, and missing evidence;
+- `input/gating-questions.md` — questions the Agent should resolve before planning pages;
+- `input/reproduction-prompt.md` — a reusable forward-test prompt, not an original transcript;
+- `input-to-output-trace.md` — maps inputs and created artifacts to the finished pages.
+
+These files document a fictional reference case. They do not replace the separate sanitized real-project forward test still required to demonstrate performance on messy, authentic project material.
+
 ## Generated asset register
 
 All seven source PNG images were generated with the built-in image-generation capability. The final Hero established the reference language: circular weighted base, two slim arms, cylindrical joints, capsule head, deep-blue matte aluminum, warm diffuser, and cobalt replaceable sleeve. Other images were then generated to preserve that language. Browser-facing WebP derivatives are created at quality 82 with `showcase/tools/optimize_images.py`. The editable source PNG files are retained locally for future editing but intentionally excluded from the lightweight Git repository.

@@ -76,6 +76,11 @@ class InstallerMatrixTests(unittest.TestCase):
                         RUNTIME_SCRIPTS,
                         {path.name for path in (target / "scripts").iterdir()},
                     )
+                    recipes = list((target / "assets" / "compositions").glob("*/ID*.html"))
+                    self.assertEqual(28, len(recipes))
+                    metadata = (target / "agents" / "openai.yaml").read_text(encoding="utf-8")
+                    self.assertIn('display_name: "Industrial Design Portfolio · 工业设计作品集"', metadata)
+                    self.assertIn("$industrial-design-portfolio", metadata)
 
     def test_installed_validators_execute_without_repository_only_files(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -108,7 +113,7 @@ class InstallerMatrixTests(unittest.TestCase):
 
             portfolio = Path(directory) / "portfolio.html"
             portfolio.write_text(
-                """<!doctype html><html><head><title>Audit</title>
+                """<!doctype html><html data-style="workshop-orange"><head><title>Audit</title>
                 <style>@media print{} @media(prefers-reduced-motion:reduce){}</style>
                 </head><body><section class="slide" data-layout="ID01">Ready</section></body></html>""",
                 encoding="utf-8",

@@ -13,7 +13,9 @@
         "title": {"type": "string", "minLength": 1},
         "audience": {"type": "string", "minLength": 1},
         "presentation_context": {"type": "string", "minLength": 1},
-        "confidentiality": {"type": "string"}
+        "confidentiality": {"type": "string"},
+        "style_preset": {"enum": ["workshop-orange", "instrument-blue", "material-green", "gallery-red"]},
+        "style_rationale": {"type": "string", "minLength": 1}
       }
     },
     "projects": {

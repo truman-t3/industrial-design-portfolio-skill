@@ -4,7 +4,9 @@
     "title": "[PORTFOLIO_TITLE]",
     "audience": "Industrial design hiring panel",
     "presentation_context": "Interview presentation",
-    "confidentiality": "Replace or redact confidential material before publishing."
+    "confidentiality": "Replace or redact confidential material before publishing.",
+    "style_preset": "workshop-orange",
+    "style_rationale": "A process-forward generalist preset fits the mixed industrial-design evidence."
   },
   "projects": [
     {

@@ -13,6 +13,7 @@ from pathlib import Path
 LAYOUTS = {f"ID{i:02d}" for i in range(1, 19)}
 LEVELS = {"E0", "E1", "E2", "E3"}
 STATUSES = {"ready", "caveat", "to_validate", "omit"}
+STYLE_PRESETS = {"workshop-orange", "instrument-blue", "material-green", "gallery-red"}
 
 
 def nonempty(value: object) -> bool:
@@ -41,6 +42,13 @@ def validate(data: object) -> list[tuple[str, str]]:
         for key in ("title", "audience", "presentation_context"):
             if not nonempty(portfolio.get(key)):
                 issues.append(finding("P1", f"portfolio.{key} must be a non-empty string."))
+        preset = portfolio.get("style_preset")
+        if preset is None:
+            issues.append(finding("P2", "portfolio.style_preset is not recorded; default to workshop-orange or choose a registered preset."))
+        elif preset not in STYLE_PRESETS:
+            issues.append(finding("P1", "portfolio.style_preset must be workshop-orange, instrument-blue, material-green, or gallery-red."))
+        if preset is not None and not nonempty(portfolio.get("style_rationale")):
+            issues.append(finding("P2", "portfolio.style_rationale should explain why the preset fits the evidence and audience."))
 
     projects = data.get("projects")
     project_ids: set[str] = set()

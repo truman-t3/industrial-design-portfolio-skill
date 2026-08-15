@@ -1,4 +1,5 @@
 interface:
-  display_name: "¹¤ÒµÉè¼Æ×÷Æ·¼¯"
-  short_description: "°Ñ¹¤ÒµÉè¼ÆÏîÄ¿ÕûÀíÎª¿ÉĞÅ¡¢¿É½²Êö¡¢¿ÉÆÀÉóµÄºáÏòÍøÒ³×÷Æ·¼¯"
-  default_prompt: "Use $industrial-design-portfolio to turn my industrial design materials into a portfolio case study."
+  display_name: "Industrial Design Portfolio Â· å·¥ä¸šè®¾è®¡ä½œå“é›†"
+  short_description: "æŠŠå·¥ä¸šè®¾è®¡é¡¹ç›®è¯æ®æ•´ç†æˆå¯ä¿¡ã€å¯è®²è¿°ã€å¯è¯„å®¡çš„ä½œå“é›†"
+  brand_color: "#1C67D2"
+  default_prompt: "Use $industrial-design-portfolio to review my industrial design materials and turn them into a credible portfolio case study."

@@ -6,7 +6,7 @@
 
 简体中文 · [English](README.md)
 
-![Version](https://img.shields.io/badge/version-v1.2.3-F05A28?style=flat-square)
+![Version](https://img.shields.io/badge/version-v1.3.0-F05A28?style=flat-square)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-SKILL.md-171717?style=flat-square)
 ![Cross Agent](https://img.shields.io/badge/Codex%20%C2%B7%20Claude%20%C2%B7%20Cursor%20%C2%B7%20Gemini%20%C2%B7%20OpenCode-compatible-1C67D2?style=flat-square)
 ![Output](https://img.shields.io/badge/output-%E8%AF%81%E6%8D%AE%E5%9E%8B%20HTML%20%E4%BD%9C%E5%93%81%E9%9B%86-69A36F?style=flat-square)
@@ -26,29 +26,6 @@
 
 它不会为了“让项目看起来完整”而虚构调研、原型、测试、制造决策或项目成果。
 
-## 选择你现在需要的帮助
-
-| 你的情况 | 可以让 Skill 做什么 |
-|---|---|
-| 手上是一个混乱的项目文件夹 | 整理成一套清楚的 12–18 页项目案例 |
-| 已经有一份作品集 | 审查哪些内容该删、该换顺序、该解释或补证据 |
-| 项目太多，不知道选哪些 | 根据职位、学校或目标受众选择项目 |
-| 设计过程不完整 | 区分已有证明、个人回忆、假设和待验证内容 |
-
-### 30 秒开始
-
-```bash
-npx skills add truman-t3/industrial-design-portfolio-skill \
-  --global --skill industrial-design-portfolio --yes --copy
-```
-
-然后把项目文件夹交给 Agent，并发送：
-
-```text
-使用 $industrial-design-portfolio 检查我的项目资料，并整理成一套
-14 页工业设计案例。所有仍然缺少证据的内容都要明确标注。
-```
-
 ## 看看最终效果
 
 ![虚构模块化桌面工作灯工业设计作品集的六页预览](showcase/modular-desk-lamp/previews/readme-showcase.webp)
@@ -63,12 +40,67 @@ npx skills add truman-t3/industrial-design-portfolio-skill \
 
 > **虚构演示声明：** AI 辅助图像只用于表达设计意图，不是用户调研、实体原型、CAD、测试结果或工程证明。
 
+检查完整案例链路：
+
+[起始任务书](showcase/modular-desk-lamp/input/brief.md) → [素材清单](showcase/modular-desk-lamp/input/asset-inventory.json) → [前置追问](showcase/modular-desk-lamp/input/gating-questions.md) → [复现提示词](showcase/modular-desk-lamp/input/reproduction-prompt.md) → [输入到输出记录](showcase/modular-desk-lamp/input-to-output-trace.md)
+
+这套工作流改善了案例的结构和披露方式，但没有把虚构的 E0 材料变成真实证据。下一项关键证明仍然是一轮经过脱敏的真实项目前向测试。
+
+### 四套视觉系统 × 七种标志性构图 × 18 种页面结构
+
+![同一个虚构桌面工作灯案例的封面、证据页和最终方案页使用四套视觉系统渲染](showcase/style-presets/style-presets.webp)
+
+上图展示了 28 个可直接复制的 HTML 构图片段中的三种代表性页面，不是 AI 模拟效果。每套系统现在都覆盖封面、证据、CMF、产品架构、迭代、最终方案和项目分隔页。证据字段与版式 ID 保持不变，但页面骨架、信息层级、比例、图片角色、留白、网格、字体和颜色会一起变化；其余页面继续使用共享的 18 种版式库。
+
+| 视觉系统 | 当你最希望评审先相信…… | 构图特征 |
+|---|---|---|
+| **Workshop / 工坊** · `workshop-orange` | 动手过程、方案探索和能力广度 | 错位面板、交错证据、活跃的过程标记 |
+| **Instrument / 仪器** · `instrument-blue` | 结构、CAD、参数和测试 | 严格对齐、技术单元、紧凑元数据 |
+| **Material / 材质** · `material-green` | CMF、触感、生活情境和健康体验 | 非对称图片主导、柔和图框、舒缓节奏 |
+| **Gallery / 展陈** · `gallery-red` | 造型、工艺、最终摄影和文化表达 | 单一主视觉、极端比例对比、编辑式留白 |
+
+不知道选哪套也没关系。把项目资料交给 Agent，它会根据最强证据和目标受众推荐一套预设，用一句话说明理由，并在整份作品集中保持一致。混合型作品集默认使用“工坊”。
+
+## 30 秒开始
+
+不需要懂终端。把下面这段话直接发给 Codex，或其他能够安装 Skill 的 Agent：
+
+```text
+请为当前用户安装下面仓库中的 industrial-design-portfolio：
+https://github.com/truman-t3/industrial-design-portfolio-skill
+安装完成后请确认，并告诉我是否需要新建一个会话。
+```
+
+也可以使用这一条跨终端命令：
+
+```bash
+npx skills add truman-t3/industrial-design-portfolio-skill --global --skill industrial-design-portfolio --yes --copy
+```
+
+然后把项目文件夹交给 Agent，并发送：
+
+```text
+使用 $industrial-design-portfolio，根据这些资料制作一套 14 页工业设计
+案例。如果我没有指定视觉风格，请根据证据和目标受众推荐最合适的预设，
+并用一句话说明理由。所有仍然缺少证据的内容都要明确标注。
+```
+
+## 选择你现在需要的帮助
+
+| 你的情况 | 可以让 Skill 做什么 |
+|---|---|
+| 手上是一个混乱的项目文件夹 | 整理成一套清楚的 12–18 页项目案例 |
+| 已经有一份作品集 | 审查哪些内容该删、该换顺序、该解释或补证据 |
+| 项目太多，不知道选哪些 | 根据职位、学校或目标受众选择项目 |
+| 设计过程不完整 | 区分已有证明、个人回忆、假设和待验证内容 |
+
 ## 它会怎样帮助你
 
 - **找到故事**：明确项目问题、关键转折和最终设计决定。
 - **展示判断力**：说明为什么选择这个方向，以及反馈或测试后改了什么。
 - **写清个人职责**：区分你完成的工作、团队协作和外部提供的素材。
 - **选择合适页面**：使用 18 种工业设计版式组织调研、方案、CMF、结构、制造、测试、迭代和最终成果。
+- **选择视觉表达**：从四套风格预设中选择一套，同时保持底层证据结构不变。
 - **保持诚实**：把假设和 AI 辅助概念图明确标出来，不冒充真实调研或工程证明。
 - **完成可用作品**：生成适合网页浏览、面试讲解和 PDF 导出的响应式作品集。
 
@@ -134,8 +166,7 @@ npx skills add truman-t3/industrial-design-portfolio-skill --list
 为 Codex 全局安装：
 
 ```bash
-npx skills add truman-t3/industrial-design-portfolio-skill \
-  --global --agent codex --skill industrial-design-portfolio --yes --copy
+npx skills add truman-t3/industrial-design-portfolio-skill --global --agent codex --skill industrial-design-portfolio --yes --copy
 ```
 
 如果使用 Claude Code，把 `codex` 换成 `claude-code`。也可以让 CLI 交互选择支持的 Agent：
@@ -192,6 +223,16 @@ python scripts/install_skill.py --platform agents --scope project
 ```text
 从我的六个项目中选择三个，制作高级产品设计师求职作品集。
 重点体现个人职责、制造协作和经过验证的设计迭代。
+```
+
+```text
+请根据这个项目的主要证据和目标受众推荐最合适的视觉预设。
+先用一句话解释选择，再开始制作案例。
+```
+
+```text
+请使用 Gallery / 展陈预设制作这个家具项目案例。
+保持证据规则不变，用更充分的留白呈现造型、工艺和最终摄影。
 ```
 
 ## 证据，而不是表演
@@ -268,13 +309,15 @@ npm run test:browser
 
 ## 版本
 
-当前正式版本：**v1.2.3**
+当前正式版本：**v1.3.0**
 
 - 以证据为核心的工业设计作品集工作流
 - MIT 许可证，明确可复用范围
 - 可校验证据、作者职责、AI 披露与版式的 manifest
 - 原创响应式 HTML 横向作品集模板
 - 18 种工业设计专用登记版式
+- 公开的虚构输入包、前置追问、复现提示词与输入到输出记录
 - 跨 Agent 入口与安装器
+- 经 UTF-8 检查的 Codex 界面元数据
 - HTML/manifest 验证器与六条可执行行为 rubric
 - 跨平台 Python 测试与 Chromium 浏览器行为测试

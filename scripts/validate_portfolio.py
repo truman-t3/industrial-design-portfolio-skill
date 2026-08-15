@@ -37,6 +37,11 @@ def validate(path: Path) -> list[tuple[str, str]]:
     for token in sorted(set(GENERIC_PLACEHOLDER.findall(text)) - set(PLACEHOLDERS)):
         findings.append(issue("P1", f"Unresolved placeholder: {token}"))
 
+    preset_match = re.search(r"<html\b[^>]*\bdata-style=[\"']([^\"']+)[\"']", text, re.I)
+    html_preset = preset_match.group(1) if preset_match else None
+    if html_preset is None:
+        findings.append(issue("P1", "The root html element has no data-style preset."))
+
     slides = re.findall(r"<section\b[^>]*class=[\"'][^\"']*\bslide\b[^\"']*[\"'][^>]*>", text, re.I)
     if not slides:
         findings.append(issue("P1", "No slide sections found."))
@@ -85,9 +90,27 @@ def validate(path: Path) -> list[tuple[str, str]]:
             findings.append(issue("P0", f"Slide {index} has generated imagery without a nearby disclosure."))
 
     manifest_path = path.parent / "portfolio_manifest.json"
-    if generated_paths and manifest_path.is_file():
+    manifest: dict | None = None
+    if manifest_path.is_file():
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            loaded_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            if isinstance(loaded_manifest, dict):
+                manifest = loaded_manifest
+            else:
+                findings.append(issue("P1", "Could not verify HTML against manifest: root must be an object."))
+        except (json.JSONDecodeError, OSError) as exc:
+            findings.append(issue("P1", f"Could not verify HTML against manifest: {exc}"))
+
+    if manifest is not None:
+        manifest_preset = manifest.get("portfolio", {}).get("style_preset")
+        if html_preset and manifest_preset and html_preset != manifest_preset:
+            findings.append(
+                issue(
+                    "P1",
+                    f"HTML data-style {html_preset!r} does not match manifest style_preset {manifest_preset!r}.",
+                )
+            )
+        if generated_paths:
             manifest_paths = {
                 item.get("file") for item in manifest.get("generated_assets", []) if isinstance(item, dict)
             }
@@ -97,13 +120,15 @@ def validate(path: Path) -> list[tuple[str, str]]:
                 findings.append(issue("P1", f"Generated image is missing from manifest: {ref}"))
             for ref in stale:
                 findings.append(issue("P1", f"Manifest generated asset is not used by HTML: {ref}"))
-        except (json.JSONDecodeError, OSError) as exc:
-            findings.append(issue("P1", f"Could not verify generated assets against manifest: {exc}"))
 
     if len(slides) >= 12 and len(layout_counts) < 7:
         findings.append(issue("P2", "A 12+ page case uses fewer than seven distinct layouts."))
 
-    sequences = re.findall(r"data-layout=[\"'](ID\d{2})[\"']", text, re.I)
+    sequences = []
+    for tag in slides:
+        match = re.search(r"data-layout=[\"'](ID\d{2})[\"']", tag, re.I)
+        if match:
+            sequences.append(match.group(1))
     for i in range(len(sequences) - 2):
         if sequences[i] == sequences[i + 1] == sequences[i + 2]:
             findings.append(issue("P2", f"Layout {sequences[i]} repeats three times consecutively."))

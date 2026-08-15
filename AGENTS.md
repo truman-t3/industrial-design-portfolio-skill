@@ -47,7 +47,8 @@ If the user has not specified audience or format, make reasonable assumptions an
 
 - Read [references/story-architecture.md](references/story-architecture.md) when planning page order, project selection, or narrative.
 - Read [references/industrial-design-evidence.md](references/industrial-design-evidence.md) before making research, engineering, manufacturing, test, or impact claims.
-- Read [references/layouts.md](references/layouts.md) before writing HTML. Use only registered layout IDs and start from the matching fragment under `assets/layouts/`.
+- Read [references/layouts.md](references/layouts.md) before writing HTML. Use only registered layout IDs. For ID01, ID03, ID08, ID10, ID13, ID14, and ID16, prefer the selected system's fragment under `assets/compositions/<style-preset>/`; otherwise start from `assets/layouts/`.
+- Read [references/style-presets.md](references/style-presets.md) when offering, selecting, or customizing a portfolio visual system.
 - Read [references/visual-system.md](references/visual-system.md) when selecting theme, typography, color, image treatment, or page rhythm.
 - Read [references/image-policy.md](references/image-policy.md) before generating or substantially editing any visual.
 - Read [references/checklist.md](references/checklist.md) for the final review and severity model.
@@ -65,9 +66,12 @@ Capture or infer:
 - presentation context: self-read, live talk, PDF export, or web review;
 - page/time constraint;
 - confidentiality and redaction rules;
-- authorship: individual responsibilities versus team contributions.
+- authorship: individual responsibilities versus team contributions;
+- visual direction: one registered visual system, inferred from the flagship evidence when the user has no preference.
 
 Copy `assets/portfolio_manifest.example.json` to the project output as `portfolio_manifest.json`, then write these decisions into it. Preserve its schema version and record uncertainty rather than deleting required fields.
+
+Choose one system from `references/style-presets.md` for the full deck. Recommend it in designer-facing language—Workshop, Instrument, Material, or Gallery—based on what the reviewer should believe first. Do not force the user to interpret raw preset IDs. Treat the system as a composition decision, not a substitute for story or evidence. Record its backward-compatible `style_preset` ID and one-sentence rationale in the manifest.
 
 ### 2. Audit source material before designing pages
 
@@ -125,6 +129,7 @@ Resolve the skill root from the current `SKILL.md`, then copy `<skill-root>/asse
 - `[PORTFOLIO_TITLE]`
 - `[DESIGNER_NAME]`
 - `[PORTFOLIO_META]`
+- `[STYLE_PRESET]`
 - `<!-- PORTFOLIO_SLIDES -->`
 
 Every slide must include:
@@ -135,7 +140,7 @@ Every slide must include:
 </section>
 ```
 
-Copy each planned page from the matching `<skill-root>/assets/layouts/IDxx.html` fragment, then replace its placeholders and adapt content without changing the evidence contract. Add local classes only when the registered fragments cannot express a required evidence type; document the reason in the manifest.
+For ID01, ID03, ID08, ID10, ID13, ID14, and ID16, copy the matching `<skill-root>/assets/compositions/<style-preset>/IDxx.html` recipe when it exists. These recipes share the same evidence fields but intentionally use different page skeletons. For every other page, copy `<skill-root>/assets/layouts/IDxx.html`. Replace placeholders and adapt content without changing the evidence contract. Do not mix composition recipes from different systems in one portfolio. Add local classes only when the registered fragments cannot express a required evidence type; document the reason in the manifest.
 
 ### 7. Handle imagery conservatively
 

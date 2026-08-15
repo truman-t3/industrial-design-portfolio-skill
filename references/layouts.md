@@ -4,8 +4,9 @@
 
 1. Layout selection rules
 2. Registered layouts
-3. Image slots
-4. Rhythm rules
+3. System-specific composition recipes
+4. Image slots
+5. Rhythm rules
 
 ## Layout selection rules
 
@@ -45,6 +46,29 @@ Every registered layout has a complete fragment under `assets/layouts/IDxx.html`
 The fragments deliberately contain only one `<section class="slide">`. Insert that section inside `<!-- PORTFOLIO_SLIDES -->` in `assets/portfolio-template.html`. Keep the `data-layout` value unchanged and replace `data-project` with the manifest project ID.
 
 Run `python scripts/validate_layout_library.py` after changing any fragment. The check requires all ID01-ID18 files, matching layout IDs, project identifiers, and non-empty image alt text.
+
+## System-specific composition recipes
+
+ID01, ID03, ID08, ID10, ID13, ID14, and ID16 also have registered recipes under:
+
+```text
+assets/compositions/<style-preset>/ID01.html
+assets/compositions/<style-preset>/ID03.html
+assets/compositions/<style-preset>/ID08.html
+assets/compositions/<style-preset>/ID10.html
+assets/compositions/<style-preset>/ID13.html
+assets/compositions/<style-preset>/ID14.html
+assets/compositions/<style-preset>/ID16.html
+```
+
+Use these recipes when a visual system is selected. They keep the same layout ID and semantic evidence fields while changing the page skeleton:
+
+- Workshop uses process boards, decision tickets, offsets, and visible making marks.
+- Instrument uses registers, aligned evidence cells, status bands, and technical sidebars.
+- Material uses a dominant contextual image, detail stacks, soft geometry, and slower reading rhythm.
+- Gallery uses extreme type scale, a single dominant plate, exhibition captions, and editorial whitespace.
+
+Use the shared `assets/layouts/IDxx.html` fragment as the fallback. Never mix recipes from different systems inside one portfolio.
 
 ## Image slots
 

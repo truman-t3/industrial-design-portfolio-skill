@@ -15,9 +15,11 @@
 - [ ] Every project has a one-sentence thesis.
 - [ ] Problem, decision, iteration, and result can be found quickly.
 - [ ] All slides use a registered `data-layout` ID.
+- [ ] The root `data-style` matches `portfolio.style_preset` in the manifest.
 - [ ] No placeholder tokens remain.
 - [ ] Images have alt text and evidence captions where required.
 - [ ] Body text and captions remain legible at presentation distance.
+- [ ] Accent labels remain readable on light, dark, and full-accent pages.
 - [ ] Navigation works with keyboard, controls, touch, and reduced motion.
 - [ ] No content overlaps the bottom safe area.
 
@@ -43,4 +45,3 @@
 ## Delivery gate
 
 Deliver only when all P0 and P1 items pass. Report remaining P2/P3 issues as optional polish, not silent omissions.
-
