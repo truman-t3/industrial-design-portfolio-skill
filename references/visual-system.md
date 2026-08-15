@@ -3,38 +3,51 @@
 ## Contents
 
 1. Design thesis
-2. Themes
+2. Presets and slide themes
 3. Typography and grid
 4. Image treatment
 5. Motion and responsive behavior
 
 ## Design thesis
 
-Use **precision editorial**: the clarity of a technical drawing combined with the restraint of a product monograph. Evidence should feel handled, measured, and intentionally sequenced.
+Use **evidence-led art direction**: preserve one evidence contract while changing how hierarchy, proportion, image role, and page rhythm express the project's strongest character. The four systems must remain recognizably different even when rendered in grayscale.
 
 Avoid generic dashboard cards, glass effects, decorative gradients, fake blueprint clutter, excessive rounded corners, and repeated floating mockups.
 
-## Themes
+Composition is the primary layer; typography and color are supporting layers. Workshop should feel assembled and iterative, Instrument aligned and testable, Material tactile and unhurried, and Gallery selective and exhibition-like. Do not reduce these differences to palette swaps.
 
-Select one theme for the full portfolio.
+## Presets and slide themes
 
-| Theme | Ink | Paper | Accent | Best use |
+Select one full-portfolio system from [style-presets.md](style-presets.md). Systems control layout-specific composition, typography, density, grid visibility, image framing, neutrals, and accent behavior.
+
+| System ID | Ink | Paper | Accent | Best use |
 |---|---|---|---|---|
-| Workshop Orange | `#171717` | `#F1EFE8` | `#F05A28` | General ID, tools, mobility |
-| Instrument Blue | `#10233E` | `#F4F3EE` | `#1C67D2` | Electronics, medical, technical |
-| Material Green | `#17251D` | `#F2EFE5` | `#69A36F` | Sustainability, home, wellbeing |
-| Gallery Red | `#201D1B` | `#F5F0E8` | `#B83A30` | Furniture, culture, premium goods |
+| `workshop-orange` | `#171717` | `#F1EFE8` | `#F05A28` | General ID, tools, mobility |
+| `instrument-blue` | `#10233E` | `#F4F6F8` | `#1C67D2` | Electronics, medical, technical |
+| `material-green` | `#17251D` | `#F2EFE5` | `#4F8A5B` | Sustainability, home, wellbeing |
+| `gallery-red` | `#201D1B` | `#FFFFFF` | `#B83A30` | Furniture, culture, premium goods |
 
-Users may provide brand colors, but constrain them to one primary accent plus neutrals. Check contrast before use.
+Use `theme-light`, `theme-dark`, `theme-paper`, and `theme-accent` as page-level tonal roles inside the chosen preset. They are not independent style choices. Users may provide brand colors, but constrain them to one primary accent plus neutrals. Check contrast before use.
 
 ## Typography and grid
 
-- Use a neutral sans-serif for titles/body and monospace for measurements, evidence levels, and metadata.
-- Use a 12-column grid with a 64-96 px outer margin on desktop.
+- Keep body copy in the neutral sans-serif stack. Use the preset display stack for titles: sans-serif in Workshop and Instrument, serif in Material and Gallery. Use monospace for measurements, evidence levels, and metadata.
+- Follow the selected system's grid density, page proportions, and outer margin. Workshop uses deliberate offsets, Instrument aligns to a dense technical grid, Material uses asymmetric image-led balance, and Gallery removes the visible grid in favor of dominant visuals and editorial whitespace.
 - Keep body copy between 17-24 px in a 16:9 deck.
 - Limit a normal page to one title, one main visual structure, and one takeaway.
 - Use hairlines and registration marks sparingly to organize evidence.
 - Preserve a bottom safe area for navigation and captions.
+
+## Semantic color tokens
+
+Treat the preset colors as roles, not interchangeable hex values:
+
+- `--accent`: larger fills, progress, and graphic anchors;
+- `--accent-text`: small accent text on light or paper pages;
+- `--accent-on-dark`: small accent text on dark pages;
+- `--on-accent`: text on a full accent page.
+
+Do not use `--accent` directly for small text. The template supplies contrast-safe text variants because the same color that works as a large fill may fail as a caption or label.
 
 ## Image treatment
 

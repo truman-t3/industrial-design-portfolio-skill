@@ -1,0 +1,67 @@
+{
+  "case_type": "fictional_demonstration",
+  "intake_assets": [
+    {
+      "file": "brief.md",
+      "origin": "repository-authored fictional input",
+      "evidence_level": "E0",
+      "usable_for": [
+        "concept proposition",
+        "portfolio audience",
+        "disclosure boundaries"
+      ]
+    }
+  ],
+  "assets_created_after_story_lock": [
+    {
+      "file": "../images/generated/lamp-04-scenarios-sheet.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "synthetic scenarios only"
+    },
+    {
+      "file": "../images/generated/lamp-06-concepts-sheet.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "fictional concept divergence"
+    },
+    {
+      "file": "../images/generated/lamp-08-cmf.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "form and CMF intent"
+    },
+    {
+      "file": "../images/generated/lamp-09-conceptual-architecture.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "conceptual architecture illustration"
+    },
+    {
+      "file": "../images/generated/lamp-10-validation-plan.webp",
+      "origin": "AI-assisted validation-plan illustration",
+      "evidence_level": "E0",
+      "usable_for": "future test questions only"
+    },
+    {
+      "file": "../images/generated/lamp-11-iteration-pair.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "illustrative revision without measured improvement"
+    },
+    {
+      "file": "../images/generated/lamp-12-final-hero.webp",
+      "origin": "AI-assisted concept visualization",
+      "evidence_level": "E0",
+      "usable_for": "resolved concept intent"
+    }
+  ],
+  "missing_evidence": [
+    "direct user research",
+    "physical prototype",
+    "CAD or engineering drawing",
+    "measured test result",
+    "manufacturing or supplier review",
+    "cost or commercial result"
+  ]
+}

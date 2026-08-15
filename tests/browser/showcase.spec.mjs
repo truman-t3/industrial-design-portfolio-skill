@@ -19,6 +19,7 @@ test.describe("desktop lightweight runtime", () => {
 
     const slides = page.locator(".slide");
     await expect(slides).toHaveCount(14);
+    await expect(page.locator("html")).toHaveAttribute("data-style", "instrument-blue");
     await expect(page.locator("#counter")).toHaveText("01 / 14");
     await expect(slides.nth(0)).toHaveClass(/is-active/);
 
@@ -29,6 +30,19 @@ test.describe("desktop lightweight runtime", () => {
     await page.locator("#next").click();
     await expect(page.locator("#counter")).toHaveText("02 / 14");
     await expect(slides.nth(1)).toHaveClass(/is-active/);
+    const accentContrast = await slides.nth(1).evaluate((slide) => {
+      const parse = (value) => value.match(/[\d.]+/g).slice(0, 3).map(Number);
+      const luminance = (value) => {
+        const channels = parse(value).map((channel) => channel / 255).map(
+          (channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4,
+        );
+        return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+      };
+      const foreground = luminance(getComputedStyle(slide.querySelector(".eyebrow")).color);
+      const background = luminance(getComputedStyle(slide).backgroundColor);
+      return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+    });
+    expect(accentContrast).toBeGreaterThanOrEqual(4.5);
 
     await page.keyboard.press("End");
     await expect(page.locator("#counter")).toHaveText("14 / 14");
@@ -80,6 +94,7 @@ test.describe("mobile runtime", () => {
     expect(deckDisplay).toBe("block");
     await expect(page.locator(".slide").nth(3)).toHaveAttribute("data-mounted", "true");
     expect(await page.locator('.slide[data-mounted="true"]').count()).toBeLessThan(14);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
     expect(errors).toEqual([]);
   });
 });
