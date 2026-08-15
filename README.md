@@ -2,9 +2,13 @@
 
 # Industrial Design Portfolio Skill
 
+## 工业设计作品集 Skill
+
 ### Turn product-design evidence into a portfolio that proves judgment.
 
-English · 简体中文（本页下方）
+### 把产品设计证据，整理成真正能够证明判断力的作品集。
+
+[English](#english) · [简体中文](#chinese)
 
 > ⭐ **If this project helped you, a star is the easiest way to say thanks — and helps others find it.**
 > 若这个项目对你有用，点个 Star 就是最简单的鼓励，也能帮更多人发现它。
@@ -17,6 +21,8 @@ English · 简体中文（本页下方）
 [![Live Demo](https://img.shields.io/badge/live_demo-open_showcase-1C67D2?style=flat-square)](https://truman-t3.github.io/industrial-design-portfolio-skill/)
 
 </div>
+
+<a id="english"></a>
 
 If your project folder contains research notes, sketches, CAD screenshots, renderings, model photos, or test records, you already have enough to begin.
 
@@ -332,11 +338,13 @@ Current release: **v1.3.0**
 
 <div align="center">
 
+<a id="chinese"></a>
+
 # 工业设计作品集 Skill
 
 ### 把产品设计证据，整理成真正能够证明判断力的作品集。
 
-English · 简体中文
+[English](#english) · [简体中文](#chinese)
 
 </div>
 
